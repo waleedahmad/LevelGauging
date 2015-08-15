@@ -57,7 +57,7 @@ var gaugeOptions = {
 $('#container-speed').highcharts(Highcharts.merge(gaugeOptions, {
     yAxis: {
         min: 0,
-        max: 200,
+        max: 6040,
         title: {
             text: 'Litres'
         }

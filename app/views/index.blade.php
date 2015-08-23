@@ -8,10 +8,13 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<!-- Authentication and Registration Form Yields -->
+			@include('notification')
 			@yield('register-form')
 			@yield('login-form')
-			<!-- Ends Here -->
+
+			@if(Session::has('auth'))
+				<a href="/logout">Logout</a>
+			@endif
 		</div>
 	</body>
 	<script type="text/javascript" src="{{URL::to('/assets/')}}/bower_components/jquery/dist/jquery.min.js"></script>

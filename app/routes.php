@@ -25,5 +25,10 @@ Route::group(['before'	=>	'auth'], function(){
 		'as' => 'MainView',
 		 'uses' => 'TankController@tankers' 
 	]);
+
+	Route::get('/logout', [
+		'as' => 'logout',
+		 'uses' => 'AccountController@logout' 
+	]);
 });	
 

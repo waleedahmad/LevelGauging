@@ -41,7 +41,7 @@ module.exports = function(grunt) {
             css: {
                 files: [
                     'css/*.scss',
-
+                    'css/imports/*.scss'
                 ],
                 tasks: ['sass'],
                 options: {

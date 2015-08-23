@@ -68,6 +68,9 @@
 				<p class="small">
 					Solution designed and build to deliver
 				</p>
+				<p class="small">
+					Already a member? <a href="/login">Login</a>
+				</p>
 			</div>
 		</div>
 	</div>

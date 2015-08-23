@@ -42,6 +42,7 @@
 								</g>
 								</svg>
 							</button>
+
 							@if($errors->count())
 							<div class="errors">
 								<ul>
@@ -66,6 +67,9 @@
 				</p>
 				<p class="small">
 					Solution designed and build to deliver
+				</p>
+				<p class="small">
+					<a href="/register">Register</a> for an account
 				</p>
 			</div>
 		</div>

@@ -35,7 +35,7 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest())
+	if (!Session::has('auth'))
 	{
 		if (Request::ajax())
 		{
@@ -43,7 +43,7 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			return Redirect::to('login')->with('global', 'You need to sign in to view this page!');
 		}
 	}
 });

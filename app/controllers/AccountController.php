@@ -70,9 +70,15 @@ class AccountController extends BaseController
                 	$user =	$user->first();
 
                 	if(Hash::check($password, $user->password)){
-                		Session::put('auth',$user);
-                		return Redirect::to('/')
-                				->with('global', 'Login Successfull');
+                		if($user->approved == 0){
+                			return Redirect::to('/login')
+                				->with('global', 'Waiting for admin approval');
+                		}else{
+                			Session::put('auth',$user);
+                			return Redirect::to('/')
+                							->with('global', 'Login Successfull');
+                		}
+                		
                 	}
                 }
                 return Redirect::to('/login')

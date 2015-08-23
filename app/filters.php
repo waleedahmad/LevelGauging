@@ -67,7 +67,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if(Session::has('auth')) return Redirect::to('/');
 });
 
 /*
@@ -86,5 +86,18 @@ Route::filter('csrf', function()
 	if (Session::token() != Input::get('_token'))
 	{
 		throw new Illuminate\Session\TokenMismatchException;
+	}
+});
+
+Route::get('auth', function(){
+	if(!Session::has('auth')){
+		if(Request::ajax()){
+			return Response::make('Unauthorized', 401);
+		}else{
+			return Redirect::to('/login')->with(
+				'global',
+				'You need to sign in to view this page'
+			);
+		}
 	}
 });

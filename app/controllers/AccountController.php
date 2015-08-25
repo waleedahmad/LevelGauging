@@ -72,7 +72,7 @@ class AccountController extends BaseController
                 	if(Hash::check($password, $user->password)){
                 		if($user->approved == 0){
                 			return Redirect::to('/login')
-                				->with('global', 'Waiting for admin approval');
+                				->with('global', 'Validated client holders only');
                 		}else{
                 			Session::put('auth',$user);
                 			return Redirect::to('/')

@@ -6,6 +6,7 @@
 
 @section('register-form')
 <div class="auth">
+	@include('notification')
 	<div class="register">
 		<div class="form">
 
@@ -20,7 +21,8 @@
 							<input  class="credentials" type="password"	name="password" placeholder="Password" required>
 						</div>
 						<div class="message">
-							<p>Register for remote access and summary overview of your tank fuel levels</p>
+							<p>Register for remote access and summary overview of your tank fuel farm levels. You will be notified by email - allow up to 48 hours.  
+</p>
 						</div>
 						<div class="button">
 							<button type="submit" class="submit">
@@ -42,16 +44,6 @@
 								</g>
 								</svg>
 							</button>
-							@if($errors->count())
-
-							<div class="errors">
-								<ul>
-									@foreach($errors->all() as $error)
-										<li>{{$error}}</li>
-									@endforeach
-								</ul>
-							</div>
-							@endif
 						</div>
 					</form>
 
@@ -68,9 +60,18 @@
 				<p class="small">
 					Solution designed and build to deliver
 				</p>
-				<p class="small">
-					Already a member? <a href="/login">Login</a>
+				<p class="new_old">
+					<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> Already a client? <a href="/login">Login</a>
 				</p>
+				@if($errors->count())
+				<div class="errors">
+					<ul>
+						@foreach($errors->all() as $error)
+							<li>{{$error}}</li>
+						@endforeach
+					</ul>
+				</div>
+				@endif
 			</div>
 		</div>
 	</div>

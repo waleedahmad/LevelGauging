@@ -8,7 +8,6 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			@include('notification')
 			@yield('register-form')
 			@yield('login-form')
 

@@ -51,7 +51,7 @@
 
 			<div class="right">
 				<p class="big">
-					Sign in 
+					Sign in
 				</p>
 				<p class="big">
 					to fuel<b>gauging</b><sup>TM</sup>

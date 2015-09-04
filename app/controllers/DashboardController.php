@@ -71,9 +71,17 @@ class DashboardController extends BaseController
 		$tank 	= 	Tank::where('owner','=',$owner)
 						->where('id','=',$tank_id);
 		if($tank->count()){
-			$tank 	=	$tank->first();
+			$tank 		=	$tank->first();
+			$d_address 	=	Contacts::where('permissions','=','admin')
+									->get()
+									->first();
+			$addresses 	=	Contacts::where('tank_id','=',$tank->id)
+									->where('permissions','!=','admin')
+									->get();
 			return View::make('client.addresses')
-						->with('tank',$tank);
+						->with('tank',$tank)
+						->with('d_address',$d_address)
+						->with('addresses',$addresses);
 		}
 		return $this->notAllowedRedirect();
 	}

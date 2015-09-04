@@ -15,7 +15,7 @@ class DashboardController extends BaseController
 			$id 	=	$tank->id;
 			return	Redirect::to("/tank/".$id."/dashboard");
 		}
-		return $this->purgeSession();
+		return $this->notAllowedRedirect();
 	}
 
 	public function tankDashboard($tank_id){
@@ -79,6 +79,7 @@ class DashboardController extends BaseController
 	}
 
 	public function notAllowedRedirect(){
+		Session::forget('auth');
 		return Redirect::to('/');
 	}
 

@@ -802,7 +802,7 @@
                                 </div>
 
                                 <div class="filename">
-                                    <a href="{{$file->uri}}" target="_blank">{{$file->file_name}}</a>
+                                    <a href="{{$file->uri}}" target="_blank">{{ substr($file->file_name, 0, 15)}}</a>
                                 </div>
 
                                 <div class="remove">

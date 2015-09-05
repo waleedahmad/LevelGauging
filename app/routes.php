@@ -56,4 +56,14 @@ Route::group(['before'	=>	'auth'], function(){
 		'as' => 'logout',
 		 'uses' => 'AccountController@logout'
 	]);
+
+	Route::post('/upload/history', [
+		'as'	=>	'history-upload',
+		'uses'	=>	'DashboardController@uploadHistory'
+	]);
+
+	Route::post('/delete/history',[
+		'as'	=>	'history-delete',
+		'uses'	=>	'DashboardController@deleteHistory'
+	]);
 });

@@ -35,9 +35,12 @@ class DashboardController extends BaseController
 		$tank 	= 	Tank::where('owner','=',$owner)
 						->where('id','=',$tank_id);
 		if($tank->count()){
-			$tank 	=	$tank->first();
+			$tank 				=	$tank->first();
+			$email_reportings 	=	NotifyEmail::where('tank_id','=',$tank_id)
+												->get();
 			return View::make('client.notifications')
-						->with('tank',$tank);
+						->with('tank',$tank)
+						->with('email_reportings',$email_reportings);
 		}
 		return $this->notAllowedRedirect();
 	}
@@ -132,7 +135,7 @@ class DashboardController extends BaseController
 
 		if($history->count()){
 			$history 	=	$history->first();
-			
+
 			if(File::delete(public_path().$history->uri)){
 				if($history->delete()){
 					return Response::json(['status' => true]);

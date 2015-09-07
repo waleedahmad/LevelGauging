@@ -66,4 +66,30 @@ Route::group(['before'	=>	'auth'], function(){
 		'as'	=>	'history-delete',
 		'uses'	=>	'DashboardController@deleteHistory'
 	]);
+
+
+	Route::post('/notifications/add/email', [
+		'as'	=>	'notification-add-repoting',
+		'uses'	=>	'NotificationController@addEmail'
+	]);
+
+	Route::post('/notifications/verify/email', [
+		'as'	=>	'notification-verify',
+		'uses'	=>	'NotificationController@alreadyExist'
+	]);
+
+	Route::post('/notifications/details/email', [
+		'as'	=>	'notification-details',
+		'uses'	=>	'NotificationController@getDetails'
+	]);
+
+	Route::post('/notifications/update/email', [
+		'as'	=>	'notification-details-update',
+		'uses'	=>	'NotificationController@updateEmail'
+	]);
+
+	Route::post('/notifications/delete/email', [
+		'as'	=>	'notification-details-remove',
+		'uses'	=>	'NotificationController@removeEmail'
+	]);
 });

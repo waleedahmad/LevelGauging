@@ -1,0 +1,183 @@
+.auth {
+    position: relative;
+    background: url("/assets/images/background_auth.png") no-repeat center;
+    background-size: 100% 100%;
+
+    .global {
+        background-color: #788838;
+        height: 35px;
+        width: 430px;
+        position: absolute;
+        padding: 5px;
+        top: 120px;
+        left: 400px;
+        padding-left: 20px;
+        color: white;
+        font-size: 20px;
+        font-weight: 100;
+
+        .close {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            padding-top: 5px;
+            padding-left: 8px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 1;
+            height: 27px;
+            width: 27px;
+            font-size: 19px;
+            color: #788838;
+        }
+    }
+
+    .copyright {
+        height: 30px;
+        width: 100%;
+        position: absolute;
+        bottom: 20px;
+        text-align: center;
+    }
+
+    .register,
+    .login {
+        position: absolute;
+        margin: 200px 10px auto;
+        height: 250px;
+        width: 820px;
+        background-color: white;
+
+        .left,
+        .right {
+            position: relative;
+            height: 100%;
+            float: left;
+        }
+
+        .left {
+            width: 400px;
+            margin-right: 20px;
+
+            .form {
+                background-color: #a4be47;
+                margin-top: 10px;
+                margin-left: 10px;
+                height: 230px;
+                width: 380px;
+
+                .fields {
+                    .formfields {
+                        .credentials {
+                            height: 50px;
+                            width: 360px;
+                            border: 0;
+                            margin-left: 10px;
+                            margin-top: 10px;
+                            padding-left: 20px;
+                            color: #a4be47;
+                            font-size: 18px;
+                        }
+                    }
+
+                    .message {
+                        height: 50px;
+                        width: 360px;
+                        color: white;
+                        margin-left: 10px;
+                        margin-top: 10px;
+                        font-size: 13px;
+                    }
+
+                    .button {
+                        height: 40px;
+                        width: 360px;
+                        margin-left: 5px;
+
+                        button {
+                            background-color: transparent;
+                            border: none;
+                        }
+
+                        #submit {
+                            border: 0;
+                            color: white;
+                            height: 30px;
+                            width: 100px;
+                            font-weight: 300;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+
+        .right {
+            position: relative;
+            width: 400px;
+            height: 250px;
+            padding-top: 5px;
+
+            .big {
+                color: #788838;
+                font-size: 48px;
+                letter-spacing: 2px;
+                -webkit-font-smoothing: antialiased;
+                padding: 0;
+                margin: 0;
+                height: 66px;
+                font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                font-weight:200;
+                font-style:normal;
+                font-weight:bold;
+                font-style:normal;
+                font-weight: 100;
+                font-style: normal;
+
+                sup {
+                    vertical-align: super;
+                    font-size: 14px;
+                }
+
+                b {
+                    font-family:"ProximaNovaCond-Bold", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                    font-weight:bold;
+                    font-style:normal;
+                }
+            }
+
+            .small {
+                color: #788838;
+                font-size: 16px;
+                letter-spacing: 2px;
+                margin-top: 10px;
+            }
+
+            .new_old {
+                color: #a4be47;
+                position: absolute;
+                right: 10px;
+                bottom: 10px;
+                font-size: 18px;
+
+                a {
+                    text-decoration: underline;
+                    color: #788838;
+                }
+            }
+
+            .errors {
+                display: inline-block;
+                float: left;
+                color: red;
+
+                ul {
+                    position: absolute;
+                    padding-left: 0;
+                    margin-left: 13px;
+                    bottom: 10px;
+                }
+            }
+        }
+    }
+}

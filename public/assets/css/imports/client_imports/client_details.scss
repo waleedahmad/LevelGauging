@@ -1,0 +1,394 @@
+.client-details{
+
+    /* --- Details View --- */
+    .content{
+        margin-left: 0;
+        margin-right: 5px;
+        margin-top: 10px;
+        width: 820px;
+        position: relative;
+
+        /** -- Client View Block -- **/
+        .content-blocks{
+            position: relative;
+            height: 450px;
+            margin-top: 7px;
+
+            .top{
+                height: 55%;
+                width: 100%;
+
+                .left,
+                .right{
+                    position:relative;
+                    float:left;
+                    height: 100%;
+                    background-color:white;
+                }
+
+                /**
+                    -   Tank Specifications
+                    -   Tank Shape svg
+                **/
+                .left{
+                    width: 64%;
+                    margin-right: 7px;
+
+                    .specs,
+                    .tank{
+                        float:left;
+                        position:relative;
+                    }
+
+                    .specs{
+                        color:#788838;
+                        width: 40%;
+                        height: 100%;
+
+                        h3{
+                            margin-top: 10px;
+                            margin-left: 15px;
+                        }
+                        .grade,
+                        .geom{
+                            margin-top: 20px;
+                            margin-left: 15px;
+
+                            p{
+                                font-size: 16px;
+                            }
+                        }
+
+                    }
+
+                    .tank{
+                        height: 100%;
+                        width: 60%;
+
+                        svg{
+                            height: 200px;
+                            width: 300px;
+                            margin-top: 30px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                /**
+                    -   Physical Location
+                **/
+                .right{
+                    color:#788838;
+                    width: 35%;
+
+                    h3{
+                        margin-top: 10px;
+                        margin-left: 15px;
+                    }
+
+                    p{
+                        margin-left: 15px;
+                        font-size: 16px;
+                    }
+
+                    .address{
+                        .left,
+                        .right{
+                            float:left;
+                            position:relative;
+                            font-size: 16px;
+                        }
+
+                        .left{
+                            height : 100%;
+                            width: 30%;
+                            padding-left: 15px;
+                        }
+
+                        .right{
+                            height: 100%;
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+
+            .bottom{
+
+                height: 45%;
+                width: 100%;
+                margin-top: 7px;
+
+                .left,
+                .right{
+                    position:relative;
+                    float:left;
+                    background-color:white;
+                    height: 100%;
+                }
+
+                /**
+                    -   Tank Inspection,
+                        Insepection dates
+
+                    -   Next Inspection Date
+                **/
+                .left{
+                    width: 64%;
+                    margin-right: 7px;
+
+                    .inspection{
+                        height: 75%;
+                        width: 100%;
+                        background-color:#54ACC4;
+                        color:white;
+
+                        .edit-inspections{
+                            height: 30px;
+                            width: 50px;
+                            position:absolute;
+                            top: 10px;
+                            right: 40px;
+                            cursor: pointer;
+                            svg{
+                                height: 25px;
+                                width: 65px;
+                                text{
+                                    font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+
+                        h3{
+                            padding-top: 10px;
+                            padding-left: 10px;
+                            margin: 0px;
+                            font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                        }
+
+                        .dates,
+                        .details{
+                            position:relative;
+                            float:left;
+                        }
+
+                        .dates{
+                            height: 70%;
+                            width: 50%;
+
+                            ul{
+                                padding-left: 25px;
+                                margin: 0px;
+                                li{
+                                    p{
+                                        margin-left: 0px;
+                                        margin-top: 10px;
+                                        font-size: 18px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .details{
+                            height: 70%;
+                            width: 50%;
+
+                            p{
+                                margin-left: 15px;
+                                margin-top: 10px;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+
+
+                    .inspect-date{
+                        height: 25%;
+                        width: 100%;
+                        background-color:#1376A1;
+                        color:white;
+                        position:absolute;
+
+                        h3{
+                            font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                            padding: 10px;
+                            margin: 0px;
+                        }
+
+                        .set-alert{
+                            position:absolute;
+                            right: 10px;
+                            top: 10px;
+                            cursor:pointer;
+                            svg{
+                                width: 100px;
+                                height: 30px;
+
+                                text{
+                                    font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                                }
+                            }
+                        }
+                    }
+
+
+                }
+
+                /**
+                    -   Report Histroy Files
+                **/
+
+                .right{
+                    
+                    width: 35%;
+                    color:white;
+                    background-color:#54ACC4;
+
+                    /*color:white;
+                    background-color:#54ACC4;
+                    top       :   0;
+                    right     :   0;
+                    bottom    :   0;
+                    left      :   0;
+                    margin    :   auto;
+                    position  :   absolute;
+                    -webkit-box-shadow : 0px 0px 20px 0px rgba(0,0,0,0.75);
+                    -moz-box-shadow : 0px 0px 20px 0px rgba(0,0,0,0.75);
+                    box-shadow : 0px 0px 20px 0px rgba(0,0,0,0.75);
+                    height    :   400px;
+                    width     :   600px;*/
+
+                    .upload{
+                        display: none;
+                        width : 215px;
+                        margin : 20px auto;
+                        form {
+                          text-align: left;
+                        }
+
+                        #file-upload {
+                          /*opacity: 0;
+                          filter: alpha(opacity=0);*/
+                          position: absolute;
+                          left: -9999px;
+                        }
+
+                        label[for="file-upload"] {
+                          padding: 0.5em;
+                          display: inline-block;
+                          background: #0b445d;
+                          cursor: pointer;
+                        }
+                        label[for="file-upload"]:hover {
+                          background: white;
+                          color:black;
+                        }
+
+                        #filename {
+                          padding: 0.5em;
+                          float: left;
+                          width: 150px;
+                          white-space: nowrap;
+                          overflow: hidden;
+                          background: #1376A1;
+                        }
+
+                    }
+
+                    .files{
+                        width: 95%;
+                        height: 145px;
+                        overflow-y : auto;
+                        margin: 5px auto;
+                        background-color: white;
+                        padding: 20px;
+
+                        .file{
+                            color: black;
+                            position: relative;
+                            height: 30px;
+                            clear: both;
+                            .icon,
+                            .filename,
+                            .remove{
+                                display: inline;
+                                float:left;
+                            }
+
+                            .icon{
+                                width: 20%;
+                                svg{
+                                    width: 30px;
+                                    height: 30px;
+                                }
+                            }
+
+                            .filename{
+                                width: 70%;
+                                font-size: 16px;
+
+                                a{
+                                    color:black;
+                                    text-decoration: underline;
+                                }
+                            }
+
+                            .remove{
+                                display: none;
+                                width: 10%;
+                                height: 10px;
+                                .delete{
+                                    position: absolute;
+                                    font-size: 12px;
+                                    color: #54ACC4;
+                                    cursor: pointer;
+                                    text-align: right;
+                                    right: 10px;
+                                }
+                            }
+                        }
+                    }
+                    
+
+                    h3{
+                        font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                        padding: 10px;
+                        margin: 0px;
+                    }
+
+                    .report-upload{
+                        position:absolute;
+                        top: 15px;
+                        right: 20px;
+                        font-size : 24px;
+                        cursor : pointer;
+                        //display: none;
+                    }
+
+                    p{
+                        margin-left: 15px;
+                        line-height: normal;
+                        font-size: 16px;
+                    }
+
+                    .close {
+                        position: absolute;
+                        right: 20px;
+                        top: 15px;
+                        padding-top: 5px;
+                        padding-left: 8px;
+                        background-color: white;
+                        border-radius: 50%;
+                        opacity: 1;
+                        height: 27px;
+                        width: 27px;
+                        font-size: 19px;
+                        color: #54ACC4;
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

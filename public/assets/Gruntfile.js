@@ -43,6 +43,7 @@ module.exports = function(grunt) {
                     'css/*.scss',
                     'css/imports/*.scss',
                     'css/imports/client_imports/*.scss',
+                    'css/imports/overlay_imports/*.scss',
                     'css/imports/overlay_imports/*.scss'
                 ],
                 tasks: ['sass'],

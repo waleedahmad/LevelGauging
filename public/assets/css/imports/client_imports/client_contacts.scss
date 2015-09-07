@@ -1,0 +1,116 @@
+.client-addresses{
+
+    /* --- Contacts View --- */
+    .content{
+        margin-left: 0;
+        margin-right: 5px;
+        margin-top: 10px;
+        width: 820px;
+        position: relative;
+
+        .content-blocks{
+        	position: relative;
+            height: 900px;
+            margin-top: 5px;
+
+            .address-list{
+                background-color: white;
+                height: 750px;
+                width: 100%;
+
+                .header{
+                    height : 50px;
+                    background-color: white;
+                    .left,
+                    .right{
+                        float:left;
+                        width: 50%;
+                        height: 100%;
+                        position:relative;
+                    }
+                    .left{
+                        padding-left: 15px;
+                        padding-top: 15px;
+                        svg{
+                            width: 120px;
+                            
+                            cursor: pointer;
+
+                            text{
+                                font-size: 13px;
+                                font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                            }
+                        }
+                    }
+
+                    .right{
+                        .edit,
+                        .remove{
+                            width: 100px;
+                            height: 40px;
+                            float:left;
+                            display:inline;
+                            position: relative;
+                            float:right;
+                            margin-top: 10px;
+                        }
+
+                        .remove{
+                            margin-left: 20px;
+                            margin-right: 20px;
+
+                        }
+                        svg{
+                            width: 100px;
+                            height: 40px;
+                            cursor: pointer;
+
+                            text{
+                                font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                            }
+                        }
+                    }
+                }
+
+                .data{
+                    height: 1000px;
+                    margin-top: 10px;
+                    padding : 10px;
+
+                    .address{
+                        height: 200px;
+                        width: 256px;
+                        float:left;
+                        display:inline;
+                        margin-right: 10px;
+                    
+                        .title{
+                            height: 40px;
+                            width: 100%;
+                            background-color:#788838;
+                            color:white;
+                            font-size: 18px;
+                            padding-top: 7px;
+                            padding-left: 10px;
+                        }
+
+                        .details{
+                            padding-top: 15px;
+                            padding-left: 10px;
+
+                            p{
+                                line-height: 12px;
+                                color: #788838;
+                                font-size: 16px;
+
+                                .email{
+                                    color:#A4BE47;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

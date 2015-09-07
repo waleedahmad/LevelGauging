@@ -1,0 +1,192 @@
+.client-dasboard,
+.client-data,
+.client-details,
+.client-notifications,
+.client-addresses {
+    position: relative;
+    background: #ececec;
+    overflow: hidden;
+    margin-bottom: 50px;
+    display:block;
+    height: 100%;
+
+
+    /** -- Client Title Header -- **/
+    .header {
+        position: relative;
+        background-color: #788838;
+        height: 60px;
+
+        .header-left,
+        .header-right {
+            float: left;
+            display: inline-block;
+        }
+
+        .header-left {
+            width: 400px;
+            height: 100%;
+
+            h2 {
+                margin: 0;
+                padding: 15px;
+                color: white;
+                padding-left: 15px;
+                font-size: 28px;
+            }
+        }
+
+        .header-right {
+            width: 390px;
+            height: 100%;
+            text-align: right;
+            padding: 20px;
+            font-size: 18px;
+            color: white;
+        }
+    }
+
+
+    /* --- Subpages Sidebar --- */
+    .sidebar {
+        margin-left: 10px;
+        margin-right: 5px;
+        margin-top: 8px;
+        width: 100px;
+        height: 930px;
+        position: relative;
+
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        ul{
+            min-height: 100%;
+            background-color:white;
+        }
+
+        li {
+            margin: 2px;
+
+            &:hover {
+                background-color: #a4be47;
+
+                path,
+                rect,
+                polygon {
+                    fill: white;
+                }
+            }
+        }
+
+        li:not(:first-child) {
+            margin-top: 10px;
+        }
+
+        li.active {
+            background-color: #a4be47;
+
+            path,
+            rect,
+            polygon {
+                fill: white;
+            }
+        }
+
+        .icon {
+            height: 40px;
+            width: 40px;
+            margin-left: 30px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+    }
+
+    /* --- Tanks Sidebar ---*/
+    .sidebar-tanks {
+        margin-left: 0;
+        margin-right: 10px;
+        margin-top: 10px;
+        width: 210px;
+        position: relative;
+        font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        a {
+            overflow-x: visible;
+            text-decoration: none;
+            display: block;
+
+            li {
+                background-color: #a4be47;
+                width: 210px;
+                height: 45px;
+                color: white;
+                padding-top: 10px;
+                padding-left: 10px;
+                font-size: 22px;
+
+                span {
+                    margin-right: 10px;
+                }
+
+                a {
+                    color: white;
+                }
+
+                &:hover {
+                    background-color: #788838;
+                }
+
+                .my-icon {
+                    position: absolute;
+                    right: 0;
+                    margin-top: 5px;
+                }
+
+                .my-icon > i {
+                    position: absolute;
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    line-height: 0;
+                    border: 0.4em solid transparent;
+                    border-left: 0.4em solid #788838;
+                    left: 0;
+                    top: 0;
+                }
+            }
+
+            li.active {
+                background-color: #788838;
+            }
+        }
+
+        a:not(:first-child) {
+            margin-top: 5px;
+        }
+    }
+
+    .sidebar,
+    .sidebar-tanks,
+    .content {
+        display: block;
+        float: left;
+
+    }
+}
+
+@import "client_imports/client_dashboard";
+@import "client_imports/client_details";
+@import "client_imports/client_notifications";
+@import "client_imports/client_data";
+@import "client_imports/client_contacts";

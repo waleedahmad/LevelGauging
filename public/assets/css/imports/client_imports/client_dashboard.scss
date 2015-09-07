@@ -1,0 +1,250 @@
+.client-dasboard {
+
+    /* --- Dashboard View --- */
+    .content {
+        margin-left: 0;
+        margin-right: 5px;
+        margin-top: 10px;
+        width: 820px;
+        position: relative;
+
+        /** -- Dashboard Content Block -- **/
+        .content-blocks {
+            position: relative;
+            height: 350px;
+            margin-top: 5px;
+
+            .content-block-left,
+            .content-block-right {
+                position: relative;
+                float: left;
+                display: inline-block;
+            }
+
+            /** -- Dashboard Fuel Capacity Chart Top -- **/
+            .content-block-left {
+                position: relative;
+                height: 350px;
+                width: 450px;
+                margin-right: 3px;
+
+                .content-block-left-capchart {
+                    background-color:white;
+                    position: relative;
+                    height: 350px;
+                }
+            }
+
+            /** -- Dashboard Fuel Capacity details -- **/
+            .content-block-right {
+                height: 350px;
+                width: 365px;
+
+                /**
+                    -   Current Fuel,
+                    -   Ullage
+                **/
+                .top {
+                    width: 100%;
+                    height: 173px;
+
+                    .current-fuel,
+                    .ullage{
+                        position: relative;
+                        height: 86.5px;
+                        width: 100%;
+                    }
+
+                    .current-fuel {
+                        background-color: #788838;
+                    }
+
+                    .ullage {
+                        background-color: #a4be47;
+                    }
+
+                    .current-fuel,
+                    .ullage {
+                        .title,
+                        .data {
+                            position: relative;
+                            float: left;
+                            height: inherit;
+                            width: 50%;
+                            color: white;
+                        }
+
+                        .title {
+                            padding-top: 10px;
+                            padding-left: 10px;
+                            font-size: 30px;
+                            font-weight: 100;
+                        }
+
+                        .data {
+                            .cap,
+                            .percent {
+                                height: 50%;
+                            }
+
+                            .cap {
+                                font-size: 28px;
+                                font-weight: bold;
+                                padding-top: 10px;
+                                padding-right: 20px;
+                                text-align: right;
+                            }
+
+                            .percent {
+                                font-size: 20px;
+                                padding-top: 10px;
+                                padding-right: 20px;
+                                text-align: right;
+                            }
+                        }
+                    }
+                }
+
+                /**
+                    -   Mass,
+                        density
+
+                    -   Sample date,
+                        temperature,
+                        upload button
+                **/
+                .bottom {
+                    margin-top: 6px;
+                    width: 100%;
+                    height: 173px;
+
+                    .mass,
+                    .date {
+                        height: 86px;
+                    }
+
+                    .mass {
+                        background-color: #54acc4;
+                        .mass-top,
+                        .mass-bottom{
+                            height: 50%;
+                            width: 100%;
+
+
+                            .title,
+                            .data {
+                                position: relative;
+                                float: left;
+                                height: inherit;
+                                width: 50%;
+                                color: white;
+                            }
+
+                            .title {
+                                padding-top: 10px;
+                                padding-left: 10px;
+                                font-size: 28px;
+                                font-weight: 100;
+                            }
+
+                            .data{
+                                padding-top: 10px;
+                                padding-right: 20px;
+                                font-size: 28px;
+                                font-weight: 100;
+                                text-align:right
+                            }
+                        }
+
+                        .mass-bottom{
+                            .title{
+                                padding-top: 10px;
+                                padding-left: 10px;
+                                font-size: 20px;
+                                font-weight: 100;
+                            }
+                            .data{
+                                padding-top: 10px;
+                                padding-right: 20px;
+                                font-size: 20px;
+                                font-weight: 100;
+                                text-align:right
+                            }
+                        }
+                    }
+
+                    .date {
+                        background-color: #3394b7;
+
+                        .sample-date{
+                            width: 100%;
+                            height: 40%;
+                            font-size : 18px;
+                            padding-top: 5px;
+                            padding-left: 10px;
+                            color:white;
+                        }
+
+                        .sample-data{
+                            height: 60%;
+                            width: 100%;
+
+                            .sample-data-left,
+                            .sample-data-right{
+                                position:relative;
+                                height: 100;
+                                float:left;
+                            }
+
+                            .sample-data-left{
+                                width: 60%;
+                                font-size: 14px;
+                                color:white;
+                                .density,
+                                .temp{
+                                    padding-left: 10px;
+                                }
+
+                            }
+
+                            .sample-data-right{
+                                width: 40%;
+                                margin-top: 3px;
+                                button {
+                                    background-color: transparent;
+                                    border: none;
+                                }
+
+                                .upload-button{
+
+                                    #upload-data-button{
+                                        border: 0;
+                                        color: white;
+                                        height: 30px;
+                                        width: 120px;
+                                        font-weight: 300;
+                                        cursor: pointer;
+                                        border : 1px solid white;
+                                        text{
+                                            font-size: 10px;
+                                            fill:white;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        /** -- Fuel Data Chart (Timeline) -- **/
+        .avg-fuel-chart{
+            height: 500px;
+            width: 100%;
+            background-color:white;
+            margin-top: 10px;
+        }
+    }
+}

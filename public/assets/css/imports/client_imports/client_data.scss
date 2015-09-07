@@ -1,0 +1,56 @@
+.client-data{
+
+    /* --- Data View --- */
+    .content{
+        margin-left: 0;
+        margin-right: 5px;
+        margin-top: 10px;
+        width: 820px;
+        position: relative;
+
+        .content-blocks{
+        	position: relative;
+            height: 850px;
+            margin-top: 5px;
+
+            .data{
+                background-color: #788838;
+                height: 600px;
+                width: 100%;
+
+                .header{
+                	height: 70px;
+                	width: 100%;
+                	padding-top: 5px;
+                	padding-left: 15px;
+                	color:white;
+                	font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+                	.title{
+                		font-size: 26px;
+                		
+                	}
+
+                	.details{
+
+                	}
+                }
+
+                .date-selector{
+                	height: 60px;
+                	width: 100%;
+                	
+                	margin-top: 10px;
+                }
+
+                .list{
+                	margin-left: 10px;
+                	height: 440px;
+                	width: 800px;
+                	background-color:white;
+                	margin-top: 10px;
+                }
+            }
+        }
+    }
+}

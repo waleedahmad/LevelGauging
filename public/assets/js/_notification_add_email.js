@@ -150,7 +150,6 @@ function alreadyExists(_email,_type,_tankid){
 function attachInputFieldTimeDateSelectors(){
 	$('#timepicker').timepicker({ 'timeFormat': 'h:i A' });
 	$( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
-
 }
 
 function analyizeAlreadyExists(res){

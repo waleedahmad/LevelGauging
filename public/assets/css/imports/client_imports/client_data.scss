@@ -28,7 +28,7 @@
 
                 	.title{
                 		font-size: 26px;
-                		
+
                 	}
 
                 	.details{
@@ -39,8 +39,70 @@
                 .date-selector{
                 	height: 60px;
                 	width: 100%;
-                	
                 	margin-top: 10px;
+                    padding-top : 10px;
+                    padding-left: 15px;
+                    .leftpicker,
+                    .rightpicker,
+                    .arrows,
+                    .actions{
+                        float:left;
+                        display: inline;
+                    }
+
+                    .leftpicker{
+                        padding-top: 2px;
+                        height : 30px;
+                        width: 155px;
+                        margin-right : 10px;
+                        input{
+                            width: 100%;
+                            padding-left : 10px;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .arrows{
+                        width: 30px;
+                        padding-top: 5px;
+                        svg{
+                            width: 30px;
+                        }
+                    }
+
+                    .rightpicker{
+                        padding-top: 2px;
+                        height : 30px;
+                        width: 155px;
+                        margin-left : 10px;
+                        margin-right : 20px;
+                        input{
+                            width: 100%;
+                            padding-left : 10px;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .actions{
+                        width:  320px;
+                        height : 30px;
+
+                        svg{
+                            width: 100px;
+                            height : 30px;
+                            cursor: pointer;
+                            text{
+                                font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                            }
+                        }
+
+                        .left,
+                        .right{
+                            display: inline;
+                            float:left;
+                            width: 110px;
+                        }
+                    }
                 }
 
                 .list{

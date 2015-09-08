@@ -382,6 +382,9 @@ function getContactDeleteAddButton(text , id){
 			+'</svg>');
 }
 
+$( "#datefrom" ).datepicker({ dateFormat: 'yy-mm-dd' });
+$( "#dateto" ).datepicker({ dateFormat: 'yy-mm-dd' });
+
 if ($('.global').length) {
     setTimeout(function() {
         $('.global').fadeOut('slow');
@@ -543,7 +546,6 @@ function alreadyExists(_email,_type,_tankid){
 function attachInputFieldTimeDateSelectors(){
 	$('#timepicker').timepicker({ 'timeFormat': 'h:i A' });
 	$( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
-
 }
 
 function analyizeAlreadyExists(res){

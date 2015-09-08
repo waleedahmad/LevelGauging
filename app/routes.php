@@ -92,4 +92,24 @@ Route::group(['before'	=>	'auth'], function(){
 		'as'	=>	'notification-details-remove',
 		'uses'	=>	'NotificationController@removeEmail'
 	]);
+
+	Route::post('/contacts/add', [
+		'as'	=>	'contacts-add',
+		'uses'	=>	'ContactController@addContact'
+	]);
+
+	Route::post('/contacts/update', [
+		'as'	=>	'contacts-update',
+		'uses'	=>	'ContactController@updateContact'
+	]);
+
+	Route::post('/contacts/delete', [
+		'as'	=>	'contacts-delete',
+		'uses'	=>	'ContactController@deleteContact'
+	]);
+
+	Route::post('/contacts/details', [
+		'as'	=>	'contacts-details',
+		'uses'	=>	'ContactController@getContactDetails'
+	]);
 });

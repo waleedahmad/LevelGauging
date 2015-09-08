@@ -1,0 +1,169 @@
+.addcontactform{
+    position: fixed;
+    height : 480px;
+    width: 500px;
+    background-color:white;
+    margin : 170px auto auto 500px;
+    color:#788838;
+
+    .close{
+          position: relative;
+          right: -27px;
+          top: -27px;
+          padding-top: 5px;
+          padding-left: 8px;
+          background-color: white;
+          border-radius: 50%;
+          opacity: 1;
+          height: 27px;
+          width: 27px;
+          font-size: 19px;
+          color: grey;
+    }
+
+    h2{
+          padding-left: 20px;
+          margin-top: 10px;
+          font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+
+    .contact-form{
+        padding-left: 10px;
+        margin-top: 10px;
+        padding-right: 20px;
+        font-family:"Proxima Nova Regular", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        .spec{
+            font-size: 22px;
+            padding-left : 10px;
+        }
+
+        input{
+            height : 35px;
+            width: 300px;
+            background-color : #ececec;;
+            color:black;
+            border : 1px solid grey;
+            padding-left : 10px;
+        }
+
+        tr{
+
+              td{
+                    padding-top: 10px;
+                    padding-bottom:10px;
+                    padding-right: 10px;
+              }
+        }
+
+        .theader{
+            background-color:#788838;
+            color: white;
+
+            input{
+                background-color:white;
+                color:black;
+            }
+        }
+
+        .contact-errors{
+            width: 300px;
+            height : 20px;
+            color:red;
+            padding: 10px;
+            padding-left: 15px;
+            font-size: 14px;
+        }
+
+        svg{
+              g{
+                  fill : #1376A1;
+              }
+              width: 100px;
+              height : 30px;
+              float:right;
+
+              margin-right: 10px;
+              cursor : pointer;
+              font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+              text{
+                    font-size: 12px;
+              }
+        }
+    }
+}
+
+.confirm-remove{
+    position: fixed;
+    height : 140px;
+    width: 500px;
+    background-color:white;
+    margin : 170px auto auto 500px;
+    color:#788838;
+
+    h2{
+          padding-left: 20px;
+          margin-top: 10px;
+          font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+
+    .close{
+          position: relative;
+          right: -27px;
+          top: -27px;
+          padding-top: 5px;
+          padding-left: 8px;
+          background-color: white;
+          border-radius: 50%;
+          opacity: 1;
+          height: 27px;
+          width: 27px;
+          font-size: 19px;
+          color: grey;
+    }
+
+    .dialogue{
+        background-color : #788838;
+        height :70px;
+        width: 96%;
+        margin: 0px auto;
+
+        .left,
+        .right{
+            float:left;
+            display: inline;
+            padding-top: 20px;
+        }
+
+        .left{
+            width: 85%;
+            p{
+                color:white;
+                font-size : 16px;
+                padding-left: 5px;
+                padding-top: 3px;
+            }
+        }
+
+        .right{
+            width: 15%;
+
+            svg{
+                  g{
+                      fill : #1376A1;
+                  }
+                  width: 80px;
+                  height : 30px;
+                  float:right;
+
+                  margin-right: 10px;
+                  cursor : pointer;
+                  font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+                  text{
+                        font-size: 12px;
+                  }
+            }
+        }
+    }
+}

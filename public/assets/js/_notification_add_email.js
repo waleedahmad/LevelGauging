@@ -183,4 +183,4 @@ function getNotificationEmailFormButton(color,text){
 					+'<polygon fill="#FFFFFF" points="19.7,14.3 15.4,16.7 11,19.1 11,14.3 11,9.5 15.4,11.9 	"/>'
 				+'</g>'
 			+'</svg>');
-	}
+}

@@ -1,0 +1,158 @@
+.editinspection{
+    position: fixed;
+    height : 440px;
+    width: 500px;
+    background-color:white;
+    margin : 170px auto auto 500px;
+    
+    .close{
+        position: relative;
+        right: -27px;
+        top: -27px;
+        padding-top: 5px;
+        padding-left: 8px;
+        background-color: white;
+        border-radius: 50%;
+        opacity: 1;
+        height: 27px;
+        width: 27px;
+        font-size: 19px;
+        color: grey;
+    }
+    
+    h2{
+        padding-left: 20px;
+        margin-top: 10px;
+        font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        color : #1376A1;
+    }
+    
+    
+    .inspection-form{
+        color : #1376A1;
+        .upper{
+            margin-left: 22px;
+            tr{
+                height : 30px;
+                td{
+                	width : 150px;
+                    padding-top: 10px;
+                    padding-bottom:10px;
+                    padding-right: 10px;
+                }
+            }
+            
+            .spec{
+                font-size : 20px;
+                font-family:"Proxima Nova Regular", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            }
+            
+            input{
+                height: 30px;
+                background-color: #ececec;;
+                width: 200px;
+                border: 0px;
+                color:black;
+                padding-left : 10px;
+            }
+            
+            select{
+                height: 30px;
+                background-color: #ececec;;
+                width: 200px;
+                border: 0px;
+                color:black;
+                padding-left : 10px;
+            }
+        }
+        
+        .bottom{
+            height : 100px;
+            position:relative;
+           	background-color:#54ACC4;
+            width : 95%;
+            height : 180px;
+            margin : 0px auto;
+            color:white;
+            padding-top: 10px;
+            
+                    
+            tr{
+                td{
+                	margin-top: 10px;
+                	height : 30px;
+                	width : 210px;
+                    padding-bottom:10px;
+                }
+            }
+
+            .last{
+           
+            	position:absolute;
+            	bottom : 0px;
+            	width:  100%;
+            	height : 60px;
+            	background-color : #1376A1;
+
+            	td{
+            		padding-top: 10px;
+            	}
+            }
+            
+            .spec{
+            	padding-left : 10px;
+                font-size : 20px;
+                font-family:"Proxima Nova Regular", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            }
+            
+            input{
+                margin-top: 5px;
+                height: 30px;
+                background-color: #ececec;;
+                width: 200px;
+                border: 0px;
+                color:black;
+                padding-left : 10px;
+            	cursor: pointer;
+            }
+            
+            select{
+                height: 30px;
+                background-color: #ececec;;
+                width: 200px;
+                border: 0px;
+                color:black;
+                padding-left : 10px;
+            }
+        }
+        svg,.reporting-errors{
+            display:inline-block;
+        }
+        
+        .reporting-errors{
+            width: 300px;
+            height : 20px;
+            color:red;
+            padding: 10px;
+            padding-left: 15px;
+            font-size: 14px;
+        }
+        
+        svg{
+            g{
+                fill : #1376A1;
+            }
+            width: 100px;
+            height : 30px;
+            float:right;
+            margin-top: 10px;
+            margin-right: 10px;
+            cursor : pointer;
+            font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            
+            text{
+                font-size: 12px;
+            }
+        }
+    }
+}

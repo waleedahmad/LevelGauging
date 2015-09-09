@@ -112,4 +112,14 @@ Route::group(['before'	=>	'auth'], function(){
 		'as'	=>	'contacts-details',
 		'uses'	=>	'ContactController@getContactDetails'
 	]);
+
+	Route::post('/inspection/edit', [
+		'as'	=>	'inspection-edit',
+		'uses'	=>	'InspectionController@updateInspectionDetails'
+	]);
+
+	Route::post('/inspection/details', [
+		'as'	=>	'inspection-details',
+		'uses'	=>	'InspectionController@getInspectionDetails'
+	]);
 });

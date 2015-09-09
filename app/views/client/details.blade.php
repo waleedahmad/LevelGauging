@@ -11,7 +11,7 @@
     <div class="content">
         <div class="header">
             <div class="header-left">
-                <h2>Details - Tank {{$tank->marking_id}} {{$tank->fuel_grade}}</h2>
+                <h2>Details - {{$tank->marking_id}} {{$tank->fuel_grade}}</h2>
             </div>
             <div class="header-right">
                 Location - {{$tank->location_name}}
@@ -45,6 +45,10 @@
                                 Internal : {{$tank->internal}}
                             </p>
                         </div>
+                    </div>
+
+                    <div class="edit-tank-specs" data-tankid="{{$tank->id}}">
+                        @include('client.svgs.details.edit_tank_inspection_button')
                     </div>
 
                     <div class="tank">
@@ -153,7 +157,10 @@
                             </div>
                         @endforeach
                     </div>
-                    <span class="glyphicon glyphicon-open-file report-upload" aria-hidden="true"></span>
+
+                    @if(Session::get('auth')['type'] === "admin")
+                        <span class="glyphicon glyphicon-open-file report-upload" aria-hidden="true"></span>
+                    @endif
                     <span class="close">X</span>
                 </div>
             </div>

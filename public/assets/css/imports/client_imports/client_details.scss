@@ -58,9 +58,9 @@
                                 font-size: 16px;
                             }
                         }
-
                     }
 
+                    
                     .tank{
                         height: 100%;
                         width: 60%;
@@ -72,6 +72,26 @@
                             cursor: pointer;
                         }
                     }
+
+                    .edit-tank-specs{
+                        height: 25px;
+                        width: 65px;
+                        position:absolute;
+                        top: 10px;
+                        right: 20px;
+                        z-index: 5;
+                        
+                        svg{
+                            cursor: pointer;
+                            height: 25px;
+                            width: 65px;
+                            text{
+                               font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+
                 }
 
                 /**
@@ -244,6 +264,7 @@
                     width: 35%;
                     color:white;
                     background-color:#54ACC4;
+                    z-index: 20;
 
                     /*color:white;
                     background-color:#54ACC4;

@@ -9,9 +9,9 @@
         if($tank->count()){
             foreach($tanks as $id){
                 if($id == $tank->id){
-                    echo "<a href='/tank/".$id."/dashboard'><li class='active'> <span class='glyphicon glyphicon-align-justify' aria-hidden='true'></span> Tank ".$count." <i class='my-icon'><i></i></i></li></a>";
+                    echo "<a href='/tank/".$id."/dashboard'><li class='active'> <span class='glyphicon glyphicon-align-justify' aria-hidden='true'></span>".$tank->marking_id." <i class='my-icon'><i></i></i></li></a>";
                 }else{
-                    echo "<a href='/tank/".$id."/dashboard'><li> <span class='glyphicon glyphicon-align-justify' aria-hidden='true'></span> Tank ".$count."</li></a>";
+                    echo "<a href='/tank/".$id."/dashboard'><li> <span class='glyphicon glyphicon-align-justify' aria-hidden='true'></span>".$tank->marking_id."</li></a>";
                 }
                 $count++;
             }

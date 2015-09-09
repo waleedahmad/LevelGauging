@@ -1,5 +1,5 @@
 .client-details{
-
+    
     /* --- Details View --- */
     .content{
         margin-left: 0;
@@ -7,17 +7,17 @@
         margin-top: 10px;
         width: 820px;
         position: relative;
-
+        
         /** -- Client View Block -- **/
         .content-blocks{
             position: relative;
             height: 450px;
             margin-top: 7px;
-
+            
             .top{
                 height: 55%;
                 width: 100%;
-
+                
                 .left,
                 .right{
                     position:relative;
@@ -25,26 +25,26 @@
                     height: 100%;
                     background-color:white;
                 }
-
+                
                 /**
-                    -   Tank Specifications
-                    -   Tank Shape svg
+                -   Tank Specifications
+                -   Tank Shape svg
                 **/
                 .left{
                     width: 64%;
                     margin-right: 7px;
-
+                    
                     .specs,
                     .tank{
                         float:left;
                         position:relative;
                     }
-
+                    
                     .specs{
                         color:#788838;
                         width: 40%;
                         height: 100%;
-
+                        
                         h3{
                             margin-top: 10px;
                             margin-left: 15px;
@@ -53,18 +53,18 @@
                         .geom{
                             margin-top: 20px;
                             margin-left: 15px;
-
+                            
                             p{
                                 font-size: 16px;
                             }
                         }
                     }
-
+                    
                     
                     .tank{
                         height: 100%;
                         width: 60%;
-
+                        
                         svg{
                             height: 200px;
                             width: 300px;
@@ -72,7 +72,7 @@
                             cursor: pointer;
                         }
                     }
-
+                    
                     .edit-tank-specs{
                         height: 25px;
                         width: 65px;
@@ -86,31 +86,31 @@
                             height: 25px;
                             width: 65px;
                             text{
-                               font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                                font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
                                 font-size: 15px;
                             }
                         }
                     }
-
+                    
                 }
-
+                
                 /**
-                    -   Physical Location
+                -   Physical Location
                 **/
                 .right{
                     color:#788838;
                     width: 35%;
-
+                    
                     h3{
                         margin-top: 10px;
                         margin-left: 15px;
                     }
-
+                    
                     p{
                         margin-left: 15px;
                         font-size: 16px;
                     }
-
+                    
                     .address{
                         .left,
                         .right{
@@ -118,27 +118,46 @@
                             position:relative;
                             font-size: 16px;
                         }
-
+                        
                         .left{
                             height : 100%;
                             width: 30%;
                             padding-left: 15px;
                         }
-
+                        
                         .right{
                             height: 100%;
                             width: 50%;
                         }
                     }
+
+                    .edit-tank-location{
+                        height: 25px;
+                        width: 65px;
+                        position:absolute;
+                        top: 10px;
+                        right: 10px;
+                        z-index: 5;
+                        
+                        svg{
+                            cursor: pointer;
+                            height: 25px;
+                            width: 65px;
+                            text{
+                                font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                                font-size: 15px;
+                            }
+                        }
+                    }
                 }
             }
-
+            
             .bottom{
-
+                
                 height: 45%;
                 width: 100%;
                 margin-top: 7px;
-
+                
                 .left,
                 .right{
                     position:relative;
@@ -146,23 +165,23 @@
                     background-color:white;
                     height: 100%;
                 }
-
+                
                 /**
-                    -   Tank Inspection,
-                        Insepection dates
-
-                    -   Next Inspection Date
+                -   Tank Inspection,
+                Insepection dates
+                
+                -   Next Inspection Date
                 **/
                 .left{
                     width: 64%;
                     margin-right: 7px;
-
+                    
                     .inspection{
                         height: 75%;
                         width: 100%;
                         background-color:#54ACC4;
                         color:white;
-
+                        
                         .edit-inspections{
                             height: 30px;
                             width: 50px;
@@ -179,24 +198,24 @@
                                 }
                             }
                         }
-
+                        
                         h3{
                             padding-top: 10px;
                             padding-left: 10px;
                             margin: 0px;
                             font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
                         }
-
+                        
                         .dates,
                         .details{
                             position:relative;
                             float:left;
                         }
-
+                        
                         .dates{
                             height: 70%;
                             width: 50%;
-
+                            
                             ul{
                                 padding-left: 25px;
                                 margin: 0px;
@@ -209,11 +228,11 @@
                                 }
                             }
                         }
-
+                        
                         .details{
                             height: 70%;
                             width: 50%;
-
+                            
                             p{
                                 margin-left: 15px;
                                 margin-top: 10px;
@@ -221,21 +240,21 @@
                             }
                         }
                     }
-
-
+                    
+                    
                     .inspect-date{
                         height: 25%;
                         width: 100%;
                         background-color:#1376A1;
                         color:white;
                         position:absolute;
-
+                        
                         h3{
                             font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
                             padding: 10px;
                             margin: 0px;
                         }
-
+                        
                         .set-alert{
                             position:absolute;
                             right: 10px;
@@ -244,28 +263,28 @@
                             svg{
                                 width: 100px;
                                 height: 30px;
-
+                                
                                 text{
                                     font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
                                 }
                             }
                         }
                     }
-
-
+                    
+                    
                 }
-
+                
                 /**
-                    -   Report Histroy Files
+                -   Report Histroy Files
                 **/
-
+                
                 .right{
                     
                     width: 35%;
                     color:white;
                     background-color:#54ACC4;
                     z-index: 20;
-
+                    
                     /*color:white;
                     background-color:#54ACC4;
                     top       :   0;
@@ -279,44 +298,44 @@
                     box-shadow : 0px 0px 20px 0px rgba(0,0,0,0.75);
                     height    :   400px;
                     width     :   600px;*/
-
+                    
                     .upload{
                         display: none;
                         width : 215px;
                         margin : 20px auto;
                         form {
-                          text-align: left;
+                            text-align: left;
                         }
-
+                        
                         #file-upload {
-                          /*opacity: 0;
-                          filter: alpha(opacity=0);*/
-                          position: absolute;
-                          left: -9999px;
+                            /*opacity: 0;
+                            filter: alpha(opacity=0);*/
+                            position: absolute;
+                            left: -9999px;
                         }
-
+                        
                         label[for="file-upload"] {
-                          padding: 0.5em;
-                          display: inline-block;
-                          background: #0b445d;
-                          cursor: pointer;
+                            padding: 0.5em;
+                            display: inline-block;
+                            background: #0b445d;
+                            cursor: pointer;
                         }
                         label[for="file-upload"]:hover {
-                          background: white;
-                          color:black;
+                            background: white;
+                            color:black;
                         }
-
+                        
                         #filename {
-                          padding: 0.5em;
-                          float: left;
-                          width: 150px;
-                          white-space: nowrap;
-                          overflow: hidden;
-                          background: #1376A1;
+                            padding: 0.5em;
+                            float: left;
+                            width: 150px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            background: #1376A1;
                         }
-
+                        
                     }
-
+                    
                     .files{
                         width: 95%;
                         height: 145px;
@@ -324,7 +343,7 @@
                         margin: 5px auto;
                         background-color: white;
                         padding: 20px;
-
+                        
                         .file{
                             color: black;
                             position: relative;
@@ -336,7 +355,7 @@
                                 display: inline;
                                 float:left;
                             }
-
+                            
                             .icon{
                                 width: 20%;
                                 svg{
@@ -344,17 +363,17 @@
                                     height: 30px;
                                 }
                             }
-
+                            
                             .filename{
                                 width: 70%;
                                 font-size: 16px;
-
+                                
                                 a{
                                     color:black;
                                     text-decoration: underline;
                                 }
                             }
-
+                            
                             .remove{
                                 display: none;
                                 width: 10%;
@@ -371,13 +390,13 @@
                         }
                     }
                     
-
+                    
                     h3{
                         font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
                         padding: 10px;
                         margin: 0px;
                     }
-
+                    
                     .report-upload{
                         position:absolute;
                         top: 15px;
@@ -386,13 +405,13 @@
                         cursor : pointer;
                         //display: none;
                     }
-
+                    
                     p{
                         margin-left: 15px;
                         line-height: normal;
                         font-size: 16px;
                     }
-
+                    
                     .close {
                         position: absolute;
                         right: 20px;

@@ -134,4 +134,14 @@ Route::group(['before'	=>	'auth'], function(){
 		'as'	=>	'specifications-details',
 		'uses'	=>	'SpecificationController@getSpecs'
 	]);
+
+	Route::post('/location/edit', [
+		'as'	=>	'location-edit',
+		'uses'	=>	'LocationController@updateLocation'
+	]);
+
+	Route::post('/location/details', [
+		'as'	=>	'location-details',
+		'uses'	=>	'LocationController@getLocationDetails'
+	]);
 });

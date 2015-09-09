@@ -76,6 +76,12 @@
                             {{$tank->location_address}}
                         </div>
                     </div>
+
+                    @if(Session::get('auth')['type'] === "admin")
+                    <div class="edit-tank-location" data-tankid="{{$tank->id}}">
+                        @include('client.svgs.details.edit_tank_inspection_button')
+                    </div>
+                    @endif
                 </div>
             </div>
 

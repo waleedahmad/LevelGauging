@@ -47,9 +47,11 @@
                         </div>
                     </div>
 
+                    @if(Session::get('auth')['type'] === "admin")
                     <div class="edit-tank-specs" data-tankid="{{$tank->id}}">
                         @include('client.svgs.details.edit_tank_inspection_button')
                     </div>
+                    @endif
 
                     <div class="tank">
                         @include('client.svgs.details.tanks.rectangle_tank')
@@ -82,11 +84,13 @@
                     <div class="inspection">
                         <h3>Tank Inspection</h3>
 
+                       
                         <div class="edit-inspections">
                             <div class="edit-tank-inspection" data-tankid="{{$tank->id}}">
                                 @include('client.svgs.details.edit_tank_inspection_button')
                             </div>
                         </div>
+                       
 
                         <div class="dates">
                             <ul>

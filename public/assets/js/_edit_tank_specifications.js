@@ -74,7 +74,7 @@ $(".edit-tank-specs").on('click', function(){
 												+'</tr>'
 											+'</table>'
 
-											+getInspectionEditButton('#1376A1','Update')
+											+getInspectionEditButton('#788838','Update')
 
 											+'<div class="reporting-errors"></div>'
 											+'<input type="hidden" name="tankid" value="'+$id+'">'

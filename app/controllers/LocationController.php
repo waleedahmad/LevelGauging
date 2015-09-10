@@ -3,7 +3,6 @@
 class LocationController extends BaseController{
 
 	public function updateLocation(){
-		//return Input::all();
 
 		$name 			=	Input::get('name');
 		$airportcode	=	Input::get('airportcode');
@@ -15,16 +14,17 @@ class LocationController extends BaseController{
 		$country		=	Input::get('country');
 		$tankid			=	Input::get('tankid');
 
-		$address 		=	[];
-
-		$address 		=	json_encode(Input::all());
-
-		$id 	=	Input::get('tankid');
-		$tank 	=	Tank::where('id','=',$id)->get()->first();
+		$id 			=	Input::get('tankid');
+		$tank 			=	TankLocation::where('tank_id','=',$id)->get()->first();
 
 		$tank->location_name 	=	$name;
 		$tank->airport_code 	=	$airportcode;
-		$tank->location_address	=	'';
+		$tank->street1			=	$street1;
+		$tank->street2			=	$street2;
+		$tank->city				=	$city;
+		$tank->region			=	$region;
+		$tank->postcode			=	$postcode;
+		$tank->country			=	$country;
 
 		if($tank->save()){
 			return Redirect::to("/tank/".$id."/details");
@@ -33,7 +33,7 @@ class LocationController extends BaseController{
 
 	public function getLocationDetails(){
 		$id 	=	Input::get('tankid');
-		$tank 	=	Tank::where('id','=',$id)->get()->first();
+		$tank 	=	TankLocation::where('tank_id','=',$id)->get()->first();
 		return Response::json($tank);
 	}
 }

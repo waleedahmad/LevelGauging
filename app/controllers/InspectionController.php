@@ -5,8 +5,9 @@ class InspectionController extends BaseController{
 	public function updateInspectionDetails(){
 		
 		$id 					=	Input::get('tankid');
-		$tank 					=	Tank::where('id','=',$id)->get()->first();
-
+		$tank 					=	TankInspection::where('tank_id','=',$id)->get()->first();
+	
+		
 		$contractor 			=	Input::get('contractor');
 		$telephone 				=	Input::get('telephone');
 		$email 					=	Input::get('email');
@@ -28,7 +29,7 @@ class InspectionController extends BaseController{
 
 	public function getInspectionDetails(){
 		$id 	=	Input::get('tankid');
-		$tank 	=	Tank::where('id','=',$id)->get()->first();
+		$tank 	=	TankInspection::where('tank_id','=',$id)->get()->first();
 		return Response::json($tank);
 	}
 }

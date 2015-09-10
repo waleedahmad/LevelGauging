@@ -8,8 +8,8 @@ class DashboardController extends BaseController
 
 	public function initView(){
 		$email 	=	Session::get('auth')['email'];
-		$tank 	=	Tank::where('owner','=',$email)
-						->orderBy('marking_id','ASC');
+		$tank 	=	Tank::where('owner','=',$email);
+
 		if($tank->count()){
 			$tank 	=	$tank->first();
 			$id 	=	$tank->id;
@@ -19,13 +19,21 @@ class DashboardController extends BaseController
 	}
 
 	public function tankDashboard($tank_id){
-		$owner	=	Session::get('auth')['email'];
-		$tank 	= 	Tank::where('owner','=',$owner)
-						->where('id','=',$tank_id);
+		$owner			=	Session::get('auth')['email'];
+		$tank 			= 	Tank::where('owner','=',$owner)
+								->where('id','=',$tank_id)
+								->get();
+		
 		if($tank->count()){
-			$tank 	=	$tank->first();
+			$tank 			=	$tank->first();
+			$tank_levels	=	TankLevels::where('tank_id','=',$tank_id)->get()->first();
+			$tank_specs 	=	TankSpecs::where('tank_id','=',$tank_id)->get()->first();
+			$tank_loc 		=	TankLocation::where('tank_id','=',$tank_id)->get()->first();
 			return View::make('client.dashboard')
-						->with('tank',$tank);
+						->with('tank',$tank)
+						->with('tanklevels',$tank_levels)
+						->with('tank_specs',$tank_specs)
+						->with('tank_location',$tank_loc);
 		}
 		return $this->notAllowedRedirect();
 	}
@@ -38,9 +46,13 @@ class DashboardController extends BaseController
 			$tank 				=	$tank->first();
 			$email_reportings 	=	NotifyEmail::where('tank_id','=',$tank_id)
 												->get();
+			$tank_specs 	=	TankSpecs::where('tank_id','=',$tank_id)->get()->first();
+			$tank_loc 		=	TankLocation::where('tank_id','=',$tank_id)->get()->first();
 			return View::make('client.notifications')
 						->with('tank',$tank)
-						->with('email_reportings',$email_reportings);
+						->with('email_reportings',$email_reportings)
+						->with('tank_specs',$tank_specs)
+						->with('tank_location',$tank_loc);
 		}
 		return $this->notAllowedRedirect();
 	}
@@ -53,9 +65,15 @@ class DashboardController extends BaseController
 			$tank 	=	$tank->first();
 			$files 	=	ReportHistory::where('tank_id','=',$tank_id)
 									->get();
+			$tank_specs 	=	TankSpecs::where('tank_id','=',$tank_id)->get()->first();
+			$tank_loc 		=	TankLocation::where('tank_id','=',$tank_id)->get()->first();
+			$tank_inspec 	=	TankInspection::where('tank_id','=',$tank_id)->get()->first();
 			return View::make('client.details')
 						->with('tank',$tank)
-						->with('files',$files);
+						->with('files',$files)
+						->with('tank_specs',$tank_specs)
+						->with('tank_location',$tank_loc)
+						->with('tank_inspection',$tank_inspec);
 		}
 		return $this->notAllowedRedirect();
 	}
@@ -66,8 +84,12 @@ class DashboardController extends BaseController
 						->where('id','=',$tank_id);
 		if($tank->count()){
 			$tank 	=	$tank->first();
+			$tank_specs 	=	TankSpecs::where('tank_id','=',$tank_id)->get()->first();
+			$tank_loc 		=	TankLocation::where('tank_id','=',$tank_id)->get()->first();
 			return View::make('client.data')
-						->with('tank',$tank);
+						->with('tank',$tank)
+						->with('tank_specs',$tank_specs)
+						->with('tank_location',$tank_loc);
 		}
 		return $this->notAllowedRedirect();
 	}
@@ -84,10 +106,14 @@ class DashboardController extends BaseController
 			$addresses 	=	Contacts::where('tank_id','=',$tank->id)
 									->where('permissions','!=','admin')
 									->get();
+			$tank_specs 	=	TankSpecs::where('tank_id','=',$tank_id)->get()->first();
+			$tank_loc 		=	TankLocation::where('tank_id','=',$tank_id)->get()->first();
 			return View::make('client.addresses')
 						->with('tank',$tank)
 						->with('d_address',$d_address)
-						->with('addresses',$addresses);
+						->with('addresses',$addresses)
+						->with('tank_specs',$tank_specs)
+						->with('tank_location',$tank_loc);
 		}
 		return $this->notAllowedRedirect();
 	}

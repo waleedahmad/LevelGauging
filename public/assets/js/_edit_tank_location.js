@@ -106,7 +106,7 @@ function fillLocationFormFields(id){
 			tankid  : id
 		},
 		success : function(res){
-			fillSpecsFormWithResponse(res);
+			fillLocationFormWithResponse(res);
 		}
 	});
 }
@@ -115,4 +115,15 @@ function attactLocationEditSubmit(){
 	$("#t-i-form").on('click', function(e){
 		$(".location-form > form").submit();
 	});
+}
+
+function fillLocationFormWithResponse(res){
+	$("#name").val(res.location_name);
+	$("#airportcode").val(res.airport_code);
+	$("#street1").val(res.street1);
+	$("#street2").val(res.street2);
+	$("#city").val(res.city);
+	$("#region").val(res.region);
+	$("#postcode").val(res.postcode);
+	$("#country").val(res.country);
 }

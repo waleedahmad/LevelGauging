@@ -10,8 +10,8 @@ class SpecificationController extends BaseController{
 		$titled 	=	Input::get('titled');
 		$internal 	=	Input::get('internal');
 
-		$id 	=	Input::get('tankid');
-		$tank 	=	Tank::where('id','=',$id)->get()->first();
+		$id 		=	Input::get('tankid');
+		$tank 		=	TankSpecs::where('tank_id','=',$id)->get()->first();
 
 		$tank->fuel_grade 	=	$fuelgrade;
 		$tank->marking_id  	=	$markingid;
@@ -27,7 +27,7 @@ class SpecificationController extends BaseController{
 
 	public function getSpecs(){
 		$id 	=	Input::get('tankid');
-		$tank 	=	Tank::where('id','=',$id)->get()->first();
+		$tank 	=	TankSpecs::where('tank_id','=',$id)->get()->first();
 		return Response::json($tank);
 	}
 }

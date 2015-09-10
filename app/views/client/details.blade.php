@@ -11,10 +11,10 @@
     <div class="content">
         <div class="header">
             <div class="header-left">
-                <h2>Details - {{$tank->marking_id}} {{$tank->fuel_grade}}</h2>
+                <h2>Details - {{$tank_specs->marking_id}} {{$tank_specs->fuel_grade}}</h2>
             </div>
             <div class="header-right">
-                Location - {{$tank->location_name}}
+                Location - {{$tank_location->location_name}}
             </div>
         </div>
         <div class="content-blocks">
@@ -25,24 +25,24 @@
 
                         <div class="grade">
                             <p>
-                                Grade of fuel : {{$tank->fuel_grade}}
+                                Grade of fuel : {{$tank_specs->fuel_grade}}
                             </p>
 
                             <p>
-                                Markings ID : Tank {{$tank->marking_id}}
+                                Markings ID : {{$tank_specs->marking_id}}
                             </p>
                         </div>
 
                         <div class="geom">
                             <p>
-                                Shape : {{$tank->shape}}
+                                Shape : {{$tank_specs->shape}}
                             </p>
                             <p>
-                                Titled : {{$tank->titled}}
+                                Titled : {{$tank_specs->titled}}
                             </p>
 
                             <p>
-                                Internal : {{$tank->internal}}
+                                Internal : {{$tank_specs->internal}}
                             </p>
                         </div>
                     </div>
@@ -61,10 +61,10 @@
                 <div class="right">
                     <h3>Physical location</h3>
                     <p>
-                        Name : {{$tank->location_name}}
+                        Name : {{$tank_location->location_name}}
                     </p>
                     <p>
-                        Airport code (if applicable) : {{$tank->airport_code}}
+                        Airport code : {{$tank_location->airport_code}}
                     </p>
 
                     <div class="address">
@@ -73,7 +73,17 @@
                         </div>
 
                         <div class="right">
-                            {{$tank->location_address}}
+                            <p>
+                                {{$tank_location->street1}}
+                            </p>
+                            <p>
+                                {{$tank_location->street2}}
+                            </p>
+
+                            <p>
+                                {{$tank_location->postcode}}
+                            </p>
+
                         </div>
                     </div>
 
@@ -102,12 +112,12 @@
                             <ul>
                                 <li>
                                     <p>
-                                        Date Inspected : {{$tank->date_inspected}}
+                                        Date Inspected : {{$tank_inspection->date_inspected}}
                                     </p>
                                 </li>
                                 <li>
                                     <p>
-                                        Date Cleaned : {{$tank->date_cleaned}}
+                                        Date Cleaned : {{$tank_inspection->date_cleaned}}
                                     </p>
                                 </li>
                             </ul>
@@ -117,21 +127,21 @@
 
                         <div class="details">
                             <p>
-                                Contractor : {{$tank->contractor}}
+                                Contractor : {{$tank_inspection->contractor}}
                             </p>
 
                             <p>
-                                Telephone : {{$tank->phone}}
+                                Telephone : {{$tank_inspection->phone}}
                             </p>
 
                             <p>
-                                Email : {{$tank->email}}
+                                Email : {{$tank_inspection->email}}
                             </p>
                         </div>
                     </div>
 
                     <div class="inspect-date">
-                        <h3>Next Inspection due : 22/06/2016</h3>
+                        <h3>Next Inspection due :  {{$tank_inspection->next_inspection}}</h3>
 
                         <div class="set-alert">
                             @include('client.svgs.details.set_alert_button')

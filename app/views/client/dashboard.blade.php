@@ -11,10 +11,10 @@
     <div class="content">
         <div class="header">
             <div class="header-left">
-                <h2>Dashboard - {{$tank->marking_id}} {{$tank->fuel_grade}}</h2>
+                <h2>Dashboard - {{$tanklevels->marking_id}} {{$tank_specs->fuel_grade}}</h2>
             </div>
             <div class="header-right">
-                Location - {{$tank->location_name}}
+                Location - {{$tank_location->location_name}}
             </div>
         </div>
         <div class="content-blocks">
@@ -32,11 +32,11 @@
                         </div>
                         <div class="data">
                             <div class="cap">
-                                {{number_format($tank->current_fuel, 1, '.', ',')}} L
+                                {{number_format($tanklevels->current_fuel, 1, '.', ',')}} L
                             </div>
 
                             <div class="percent">
-                                {{round(($tank->current_fuel/$tank->max_sfl)*100, 2)}} %
+                                {{round(($tank->tanklevels/$tanklevels->max_sfl)*100, 2)}} %
                             </div>
                         </div>
                     </div>
@@ -46,11 +46,11 @@
                         </div>
                         <div class="data">
                             <div class="cap">
-                                {{number_format($tank->tank_ullage, 1, '.', ',')}} L
+                                {{number_format($tanklevels->tank_ullage, 1, '.', ',')}} L
                             </div>
 
                             <div class="percent">
-                                {{100 - round(($tank->current_fuel/$tank->max_sfl)*100, 2)}} %
+                                {{100 - round(($tanklevels->current_fuel/$tanklevels->max_sfl)*100, 2)}} %
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="data">
-                                {{number_format($tank->fuel_mass, 1, '.', ',')}} Kg
+                                {{number_format($tanklevels->fuel_mass, 1, '.', ',')}} Kg
                             </div>
                         </div>
 
@@ -74,23 +74,23 @@
                             </div>
 
                             <div class="data">
-                                {{round($tank->corrected_density,4)}} Kg/L
+                                {{round($tanklevels->corrected_density,4)}} Kg/L
                             </div>
                         </div>
                     </div>
 
                     <div class="date">
                         <div class="sample-date">
-                            Sample Taken : {{$tank->sample_taken}}
+                            Sample Taken : {{$tanklevels->sample_taken}}
                         </div>
 
                         <div class="sample-data">
                             <div class="sample-data-left">
                                 <div class="density">
-                                    Density of sample : {{round($tank->corrected_density,4)}}
+                                    Density of sample : {{round($tanklevels->corrected_density,4)}}
                                 </div>
                                 <div class="temp">
-                                    Temperature of sample : {{$tank->sample_temp}} C
+                                    Temperature of sample : {{$tanklevels->sample_temp}} C
                                 </div>
                             </div>
 

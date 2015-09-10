@@ -96,4 +96,8 @@ class AccountController extends BaseController
     	return Redirect::to('/login')
                 				->with('global', 'Successfully Logged out');
     }
+
+    public function manageUsers(){
+        return 'Page Under Construction';
+    }
 }

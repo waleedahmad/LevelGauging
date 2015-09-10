@@ -52,6 +52,13 @@ Route::group(['before'	=>	'auth'], function(){
 		'uses'	=>	'DashboardController@tankContacts'
 	]);
 
+	Route::get('/users/authorize',[
+		'as'	=>	'users-authorize',
+		'uses'	=>	'AccountController@manageUsers'
+	]);
+
+	
+
 	Route::get('/logout', [
 		'as' => 'logout',
 		 'uses' => 'AccountController@logout'
@@ -59,12 +66,12 @@ Route::group(['before'	=>	'auth'], function(){
 
 	Route::post('/upload/history', [
 		'as'	=>	'history-upload',
-		'uses'	=>	'DashboardController@uploadHistory'
+		'uses'	=>	'HistoryController@uploadHistory'
 	]);
 
 	Route::post('/delete/history',[
 		'as'	=>	'history-delete',
-		'uses'	=>	'DashboardController@deleteHistory'
+		'uses'	=>	'HistoryController@deleteHistory'
 	]);
 
 
@@ -144,4 +151,7 @@ Route::group(['before'	=>	'auth'], function(){
 		'as'	=>	'location-details',
 		'uses'	=>	'LocationController@getLocationDetails'
 	]);
+
+
+
 });

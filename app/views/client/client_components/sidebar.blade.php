@@ -123,7 +123,7 @@
             }
         ?>
        
-
+        @if(Session::get('auth')['type'] === "admin")
         <?php 
             $svgs = [
                     'authorize'     =>      '<?xml version="1.0" encoding="utf-8"?>
@@ -178,7 +178,7 @@
 
             }
          ?>
-       
+       @endif
 
     </ul>
 </div>

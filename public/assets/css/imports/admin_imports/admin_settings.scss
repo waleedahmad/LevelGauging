@@ -1,0 +1,126 @@
+.admin-settings{
+	.content{
+		margin-left: 0;
+        margin-right: 5px;
+        margin-top: 10px;
+        width: 820px;
+        position: relative;
+
+        .content-blocks{
+        	position: relative;
+            height: 900px;
+            margin-top: 5px;
+
+            .settings-block{
+            	height: 600px;
+                width: 100%;
+                background-color: #788838;
+
+                .header{
+                    height : 60px;
+                    width: 100%;
+                    padding-top: 10px;
+                    padding-left: 20px;
+
+                    .icon,
+                    .title{
+                        float:left;
+                    }
+
+                    .icon{
+                        svg{
+
+                            width: 30px;
+                            height: 30px;
+
+                            text{
+                                font-size: 13px;
+                                font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                            }
+                        }
+                    }
+
+                    .title{
+                        margin-top: 0px;
+                        padding-top: 0px;
+                        font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                        color:white;
+                        font-size: 24px;
+                        margin-left: 20px;
+                    }
+                }
+
+                .body{
+                    height : 530px;
+                    width: 800px;
+                    margin : 0px auto;
+                    background-color:white;
+                    padding-left: 10px;
+                    padding-top: 50px;
+
+                    .table{
+                        table{
+                            thead{
+                                th{
+                                    color: #788838;
+                                    width: 100px;
+                                    padding-top: 10px;
+                                    padding-bottom:10px;
+                                    padding-right: 10px;
+                                    font-size: 16px;
+
+                                    &.notes{
+                                        width: 250px;
+                                    }
+
+                                    &:first-child{
+                                        padding-left: 5px;
+                                    }
+                                }
+                            }
+
+                            tbody{
+                                td{
+                                    color: #788838;
+                                    width: 120px;
+                                    font-size: 16px;
+                                    background-color: #ececec;;
+
+                                    &.email{
+                                        width: 120px;
+                                    }
+
+                                    &.actions{
+                                        width: 300px;
+                                        padding-top: 5px;
+                                        padding-left: 20px;
+                                        svg{
+                                            width: 100px;
+                                            height : 30px;
+                                            cursor: pointer;
+
+                                            text{
+                                                font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                                                font-size: 12px;
+                                            }
+                                        }
+
+                                        .left,
+                                        .right{
+                                            float:left;
+                                            margin-right: 10px;
+                                        }
+                                    }
+
+                                    &:first-child{
+                                        padding-left: 5px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+	}
+}

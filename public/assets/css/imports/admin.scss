@@ -1,8 +1,5 @@
-.client-dasboard,
-.client-data,
-.client-details,
-.client-notifications,
-.client-addresses {
+.admin-authorize,
+.admin-settings{
     position: relative;
     background: #ececec;
     overflow: hidden;
@@ -116,12 +113,56 @@
         position: relative;
         font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
+        .user-search,
+        .toggel-user-search{
+            float:left;
+            position: relative;
+        }
+
         .user-search{
             border : 0px;
-            width: 100%;
+            width: 180px;
             padding-left : 20px;
             height: 30px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        .toggel-user-search{
+            font-size: 20px;
+            color: #a4be47;
+            margin-top: 4px;
+            margin-left : 5px;
+            cursor:pointer;
+            position: relative;
+
+        }
+
+        .search-options{
+            width: 210px;
+            height : 30px;
+            clear:both;
+            margin-bottom : 10px;
+            font-size: 14px;
+            display: none;
+            p{
+                margin-left: 5px;
+            }
+            p,span{
+                display: inline-block;
+                float:left;
+                margin-right : 10px;
+                font-weight : bold;
+            }
+            span{
+                cursor: pointer;
+                color: #788838;
+                text-decoration: underline;
+
+                &.active{
+                    color:grey;
+                    text-decoration: none;
+                }
+            }
         }
 
         ul,
@@ -129,6 +170,7 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            clear:both;
         }
         a {
             overflow-x: visible;
@@ -194,7 +236,6 @@
     }
 
     .sidebar,
-    .sidebar-tanks,
     .content,
     .sidebar-user {
         display: block;
@@ -203,8 +244,5 @@
     }
 }
 
-@import "client_imports/client_dashboard";
-@import "client_imports/client_details";
-@import "client_imports/client_notifications";
-@import "client_imports/client_data";
-@import "client_imports/client_contacts";
+@import "admin_imports/admin_authorize";
+@import "admin_imports/admin_settings";

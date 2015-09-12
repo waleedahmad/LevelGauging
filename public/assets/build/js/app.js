@@ -1,3 +1,48 @@
+var adminRedirect 	=	function(){
+
+	this.authLink 	=	'/users/authorize';
+
+	this.settingLink=	'/users/settings';
+		
+	this.getListCount 	=	function(){
+		return $(".sidebar-user > ul > a").length;
+	};
+
+	this.getFirstUserLink 	=	function(){
+		return $(".sidebar-user > ul > a:first-child").attr('href');
+	};
+	
+	this.forceRedirect 	=	function(url){
+		window.location.href 	=	url;
+	};
+	
+	this.getCurrentPath =	function(){
+		return window.location.pathname;
+	};
+	
+	this.satisfyRedirect = 	function(){
+		if(	this.getListCount() && 
+			this.getCurrentPath() != this.getFirstUserLink() && 
+			this.getCurrentPath() === this.authLink || 
+			this.getCurrentPath() === this.settingLink)
+		{
+			return true;
+		}
+		return false;
+	};
+	
+	this.init 	=	function(){
+		if(this.satisfyRedirect()){
+			this.forceRedirect(this.getFirstUserLink());
+		}
+	}
+
+};
+
+$(function(){
+	checkAdminRedirect 	=	new adminRedirect();
+	checkAdminRedirect.init();
+}());
 var contact_count  =   $(".address-list").find(".address").length;
 
 if(contact_count > 8){
@@ -1279,3 +1324,56 @@ $($report_upload).find('.files > .file > .remove > .delete').on('click', functio
  		}
 	});
 });
+var toggleSearch 	=	function(){
+
+	this.hasClass 	=	 function(className){
+		return $(".toggel-user-search").hasClass(className);
+	}
+
+	this.addClass 	=	 function(className){
+		$(".toggel-user-search").addClass(className);
+	}
+
+	this.removeClass= 	function(className){
+		$(".toggel-user-search").removeClass(className);
+	}
+
+	this.showSearchOptions 	= function(){
+		$(".search-options").slideDown();
+	}
+
+	this.hideSearchOptions 	= function(){
+		$(".search-options").slideUp();
+	}
+
+	this.handleSearchToggle =	function(e){
+		var context 	= 	e.data.context;
+	
+		if(context.hasClass('glyphicon-option-horizontal')){
+
+			context.removeClass('glyphicon-option-horizontal');
+			context.addClass('glyphicon-option-vertical');
+			context.showSearchOptions();
+
+		}else if(context.hasClass('glyphicon-option-vertical')){
+
+			context.removeClass('glyphicon-option-vertical');
+			context.addClass('glyphicon-option-horizontal');
+			context.hideSearchOptions();
+		}
+	};
+
+	this.attachToggleEvent 	=	function(){
+		$(".toggel-user-search").on('click', {context : this}, this.handleSearchToggle);
+	};
+
+	this.init 		=	function(){
+		this.attachToggleEvent();
+	};
+};
+
+
+$(function(){
+	var user_search 	=	new toggleSearch();
+	user_search.init();
+}());

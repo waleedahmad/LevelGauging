@@ -27,34 +27,49 @@ Route::group(['before'	=>	'auth'], function(){
 		 'uses' => 'DashboardController@initView'
 	]);
 
-	Route::get('/tank/{id}/dashboard',[
+	Route::get('/user/{userid}/tank/{id}/dashboard',[
 		'as'	=>	'tank-dashboard',
 		'uses'	=>	'DashboardController@tankDashboard'
 	]);
 
-	Route::get('/tank/{id}/notifications',[
+	Route::get('/user/{userid}/tank/{id}/notifications',[
 		'as'	=>	'tank-notifications',
 		'uses'	=>	'DashboardController@tankNotifications'
 	]);
 
-	Route::get('/tank/{id}/details',[
+	Route::get('/user/{userid}/tank/{id}/details',[
 		'as'	=>	'tank-details',
 		'uses'	=>	'DashboardController@tankDetails'
 	]);
 
-	Route::get('/tank/{id}/data',[
+	Route::get('/user/{userid}/tank/{id}/data',[
 		'as'	=>	'tank-data',
 		'uses'	=>	'DashboardController@tankData'
 	]);
 
-	Route::get('/tank/{id}/contacts',[
+	Route::get('/user/{userid}/tank/{id}/contacts',[
 		'as'	=>	'tank-contacts',
 		'uses'	=>	'DashboardController@tankContacts'
 	]);
 
 	Route::get('/users/authorize',[
 		'as'	=>	'users-authorize',
-		'uses'	=>	'AccountController@manageUsers'
+		'uses'	=>	'AdminController@manageUsers'
+	]);
+
+	Route::get('/users/settings',[
+		'as'	=>	'users-settings',
+		'uses'	=>	'AdminController@userSettings'
+	]);
+
+	Route::get('/users/{email}/authorize',[
+		'as'	=>	'users-authorize-user',
+		'uses'	=>	'AdminController@userAuthSettings'
+	]);
+
+	Route::get('/users/{email}/settings',[
+		'as'	=>	'users-settings-user',
+		'uses'	=>	'AdminController@userTankSettings'
 	]);
 
 	

@@ -11,7 +11,8 @@
     <div class="content">
         <div class="header">
             <div class="header-left">
-                <h2>Dashboard - {{$tanklevels->marking_id}} {{$tank_specs->fuel_grade}}</h2>
+
+                <h2>Dashboard - {{$tank_specs->marking_id}} {{$tank_specs->fuel_grade}}</h2>
             </div>
             <div class="header-right">
                 Location - {{$tank_location->location_name}}

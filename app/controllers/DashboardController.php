@@ -7,20 +7,34 @@ class DashboardController extends BaseController
 {
 
 	public function initView(){
-		$email 	=	$this->getSessionUserEmail();
-		$tank 	=	$this->getUserTanks($email);
-
-		if($tank->count()){
-			$tank 	=	$tank->first();
-			$id 	=	$tank->id;
-			return	Redirect::to("/tank/".$id."/dashboard");
+		
+		if($this->userIsAdmin()){
+			return Redirect::to('/users/authorize');
+		}else{
+			$email 	=	$this->getSessionUserEmail();
+			$userid =	$this->getSessionUserID();
+			$tank 	=	$this->getUserTanks($email);
+			if($tank->count()){
+				$tank 	=	$tank->first();
+				$id 	=	$tank->id;
+				return	Redirect::to("/user/".$userid."/tank/".$id."/dashboard");
+			}
+			return $this->notAllowedRedirect();
 		}
-		return $this->notAllowedRedirect();
+		
+		
 	}
 
-	public function tankDashboard($tank_id){
+	public function tankDashboard( $user_id,  $tank_id ){
 		$owner			=	$this->getSessionUserEmail();
-		$tank 			= 	$this->getTankDetails($owner,$tank_id);
+
+		if($this->userIsAdmin()){
+			$tank 	= 	$this->getTankDetailsForAdmin($tank_id);
+
+		}else{
+			$tank 	= 	$this->getTankDetailsForUser($owner,$tank_id);
+		}
+		
 		
 		if($tank->count()){
 			$tank 			=	$tank->first();
@@ -40,14 +54,22 @@ class DashboardController extends BaseController
 						)
 						->with(
 							'tank_location'	,	$tank_loc
+						)->with(
+							'user_id'		, 	$user_id
 						);
 		}
 		return $this->notAllowedRedirect();
 	}
 
-	public function tankNotifications($tank_id){
+	public function tankNotifications($user_id , $tank_id){
 		$owner	=	$this->getSessionUserEmail();
-		$tank 	= 	$this->getTankDetails($owner,$tank_id);
+		$userid =	$this->getSessionUserID();
+		
+		if($this->userIsAdmin()){
+			$tank 	= 	$this->getTankDetailsForAdmin($tank_id);
+		}else{
+			$tank 	= 	$this->getTankDetailsForUser($owner,$tank_id);
+		}
 
 		if($tank->count()){
 
@@ -68,14 +90,22 @@ class DashboardController extends BaseController
 						)
 						->with(
 							'tank_location'		,	$tank_loc
+						)->with(
+							'user_id'		, 	$user_id
 						);
 		}
 		return $this->notAllowedRedirect();
 	}
 
-	public function tankDetails($tank_id){
+	public function tankDetails($user_id, $tank_id){
 		$owner	=	$this->getSessionUserEmail();
-		$tank 	= 	$this->getTankDetails($owner,$tank_id);
+		$userid =	$this->getSessionUserID();
+		
+		if($this->userIsAdmin()){
+			$tank 	= 	$this->getTankDetailsForAdmin($tank_id);
+		}else{
+			$tank 	= 	$this->getTankDetailsForUser($owner,$tank_id);
+		}
 
 		if($tank->count()){
 			$tank 			=	$tank->first();
@@ -99,14 +129,22 @@ class DashboardController extends BaseController
 						)
 						->with(
 							'tank_inspection'	,	$tank_inspec
+						)->with(
+							'user_id'		, 	$user_id
 						);
 		}
 		return $this->notAllowedRedirect();
 	}
 
-	public function tankData($tank_id){
+	public function tankData($user_id,$tank_id){
 		$owner	=	$this->getSessionUserEmail();
-		$tank 	= 	$this->getTankDetails($owner,$tank_id);
+		$userid =	$this->getSessionUserID();
+		
+		if($this->userIsAdmin()){
+			$tank 	= 	$this->getTankDetailsForAdmin($tank_id);
+		}else{
+			$tank 	= 	$this->getTankDetailsForUser($owner,$tank_id);
+		}
 
 		if($tank->count()){
 			$tank 			=	$tank->first();
@@ -122,14 +160,22 @@ class DashboardController extends BaseController
 						)
 						->with(
 							'tank_location'	,	$tank_loc
+						)->with(
+							'user_id'		, 	$user_id
 						);
 		}
 		return $this->notAllowedRedirect();
 	}
 
-	public function tankContacts($tank_id){
+	public function tankContacts($user_id,$tank_id){
 		$owner	=	$this->getSessionUserEmail();
-		$tank 	= 	$this->getTankDetails($owner,$tank_id);
+		$userid =	$this->getSessionUserID();
+		
+		if($this->userIsAdmin()){
+			$tank 	= 	$this->getTankDetailsForAdmin($tank_id);
+		}else{
+			$tank 	= 	$this->getTankDetailsForUser($owner,$tank_id);
+		}
 
 		if($tank->count()){
 			$tank 			=	$tank->first();
@@ -153,6 +199,8 @@ class DashboardController extends BaseController
 						)
 						->with(
 							'tank_location'	,	$tank_loc
+						)->with(
+							'user_id'		, 	$user_id
 						);
 		}
 		return $this->notAllowedRedirect();
@@ -179,7 +227,12 @@ class DashboardController extends BaseController
 	 * $owner 	- 	Tank Owner (Email)
 	 * $tank_id	-	Tank Unqiue ID
 	 */
-	public function getTankDetails($owner, $tank_id){
+	public function getTankDetailsForAdmin($tank_id){
+		return 	Tank::where('id','=',$tank_id)
+					->get();
+	}
+
+	public function getTankDetailsForUser($owner, $tank_id){
 		return 	Tank::where('owner','=',$owner)
 					->where('id','=',$tank_id)
 					->get();
@@ -245,6 +298,20 @@ class DashboardController extends BaseController
 	 */
 	public function getSessionUserEmail(){
 		return Session::get('auth')['email'];
+	}
+
+	/**
+	 * Return Authenticated USER ID
+	 */
+	public function getSessionUserID(){
+		return Session::get('auth')['id'];
+	}
+
+	/**
+	 * Check if Authenticated user is admin
+	 */
+	public function userIsAdmin(){
+		return (Session::get('auth')['type'] === "admin") ? true : false;
 	}
 
 

@@ -1,19 +1,18 @@
 <div class="sidebar-tanks">
     <ul>
     <?php
-        $email  =   Session::get('auth')['email'];
+        $email  =   User::where('id','=',$user_id)->get()->first()->email;
         $tanks  =   Tank::where('owner','=',$email)
+                        ->orderBy('id','DESC')
                         ->lists('id');
-        $count  =   1;
         if($tank->count()){
             foreach($tanks as $id){
-                $tank_specs     =   TankSpecs::where('tank_id','=',$tank->id)->get()->first();
+                $tank_specs     =   TankSpecs::where('tank_id','=',$id)->get()->first();
                 if($id == $tank->id){
-                    echo "<a href='/tank/".$id."/dashboard'><li class='active'> <span class='glyphicon glyphicon-align-justify' aria-hidden='true'></span>".$tank_specs->marking_id." <i class='my-icon'><i></i></i></li></a>";
+                    echo "<a href='/user/".$user_id."/tank/".$id."/dashboard'><li class='active'> <span class='glyphicon glyphicon-align-justify' aria-hidden='true'></span>".$tank_specs->marking_id." <i class='my-icon'><i></i></i></li></a>";
                 }else{
-                    echo "<a href='/tank/".$id."/dashboard'><li> <span class='glyphicon glyphicon-align-justify' aria-hidden='true'></span>".$tank_specs->marking_id."</li></a>";
+                    echo "<a href='/user/".$user_id."/tank/".$id."/dashboard'><li> <span class='glyphicon glyphicon-align-justify' aria-hidden='true'></span>".$tank_specs->marking_id."</li></a>";
                 }
-                $count++;
             }
         }else{
             echo "No Tanks";

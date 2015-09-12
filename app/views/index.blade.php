@@ -24,6 +24,7 @@
 			@yield('client-notifications')
 			@yield('client-data')
 			@yield('client-addresses')
+			@yield('admin-authorize')
 		</div>
 	</body>
 	<script type="text/javascript" src="{{URL::to('/assets/')}}/bower_components/jquery/dist/jquery.min.js"></script>

@@ -11,8 +11,9 @@ class ContactController extends BaseController{
         $phone2     =   Input::get("phone2");
         $email      =   Input::get("email");
         $tankid     =   Input::get("tankid");
+        $userid     =   Input::get('userid');
 
-        $contact    =   new Contacts;
+        $contact                =   new Contacts;
         $contact->tank_id       =   $tankid;
         $contact->title         =   $title;
         $contact->name          =   $name;
@@ -21,10 +22,11 @@ class ContactController extends BaseController{
         $contact->telephone_1   =   $phone1;
         $contact->telephone_2   =   $phone2;
         $contact->email         =   $email;
-        $contact->permissions   =   'user';
+        
+
 
         if($contact->save()){
-            return Redirect::to('/tank/'.$tankid.'/contacts')
+            return Redirect::to('/user/'.$userid.'/tank/'.$tankid.'/contacts')
                             ->with('hus','Report saved successfully');
         }
     }
@@ -40,6 +42,7 @@ class ContactController extends BaseController{
         $email      =   Input::get("email");
         $tankid     =   Input::get("tankid");
         $id         =   Input::get("id");
+        $userid     =   Input::get('userid');
 
         $contact    =   Contacts::where('id','=',$id)->get()->first();
 
@@ -50,10 +53,9 @@ class ContactController extends BaseController{
         $contact->telephone_1   =   $phone1;
         $contact->telephone_2   =   $phone2;
         $contact->email         =   $email;
-        $contact->permissions   =   'user';
 
         if($contact->save()){
-            return Redirect::to('/tank/'.$tankid.'/contacts')
+            return Redirect::to('/user/'.$userid.'/tank/'.$tankid.'/contacts')
                             ->with('hus','Report saved successfully');
         }
     }

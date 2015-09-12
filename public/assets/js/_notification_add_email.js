@@ -3,7 +3,8 @@ $("#add-reporting-email , #add-levelalert-email , #add-inspectdue-email").on('cl
 	var tankid			=	$('meta[name=tankid]').attr("content"),
 		name 			=	$(this).attr('data-name'),
 		submit_color 	=	'',
-		header 			=	'';
+		header 			=	'',
+		user_id         =   $('meta[name=userid]').attr("content");
 	console.log(name);
 	switch (name) {
 		case 'reporting':
@@ -94,6 +95,7 @@ $("#add-reporting-email , #add-levelalert-email , #add-inspectdue-email").on('cl
 
 											+'<input type="hidden" name="tankid" value="'+tankid+'">'
 											+'<input type="hidden" name="type" value="'+name+'">'
+											+'<input type="hidden" name="userid" value="'+user_id+'">'
 										+'</form>'
 									+'</div>'
 								+'</div>'

@@ -1,6 +1,7 @@
 $(".edit-tank-specs").on('click', function(){
 	var $target 	=	$(this),
-		$id 		=	$($target).attr('data-tankid');
+		$id 		=	$($target).attr('data-tankid'),
+		user_id         =   $('meta[name=userid]').attr("content");
 
 	var $overlay_dom 	=	'<div class="overlays">'
 								+'<div class="editspecs">'
@@ -78,6 +79,7 @@ $(".edit-tank-specs").on('click', function(){
 
 											+'<div class="reporting-errors"></div>'
 											+'<input type="hidden" name="tankid" value="'+$id+'">'
+											+'<input type="hidden" name="userid" value="'+user_id+'">'
 										+'</form>'
 									+'</div>'
 								+'</div>'

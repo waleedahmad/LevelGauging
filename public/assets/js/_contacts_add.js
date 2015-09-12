@@ -23,6 +23,10 @@ var AddContact 	=	function(){
 		return $('meta[name=tankid]').attr("content");
 	}
 
+	this.getUserId	 	= 	function(){
+		return $('meta[name=userid]').attr("content");
+	}
+
 	this.appendOverlayToWrapper 	= function($overlay){
 		$($overlay).hide().appendTo(".wrapper").fadeIn('fast');
 	}
@@ -42,7 +46,8 @@ $(function(){
 }());
 
 AddContact.prototype.getOverlayTemplate 	= 	function(context){
-	var tank_id 	=	context.getTankId();
+	var tank_id 	=	context.getTankId(),
+		user_id 	=	context.getUserId();
 
 	var $overlay 	=	'<div class="overlays">'
 							+'<div class="addcontactform">'
@@ -61,6 +66,7 @@ AddContact.prototype.getOverlayTemplate 	= 	function(context){
 										+context.getSubmitButton('Add')
 										+'<div class="contact-errors"></div>'
 										+'<input type="hidden" name="tankid" value="'+tank_id+'">'
+										+'<input type="hidden" name="userid" value="'+user_id+'">'
 									+'</form>'
 								+'</div>'
 							+'</div>'

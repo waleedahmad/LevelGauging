@@ -11,6 +11,7 @@ class HistoryController extends BaseController{
 			$name 	=	strtolower(Input::file('history')->getClientOriginalName());
 			$uri 	= 	'/uploads/history/'.$id.'.'.$ext;
 			$tank_id= 	Input::get('tankid');
+			$user_id=	Input::get('userid');
 
 			if(!File::exists(public_path().'/uploads/history/')) {
                 File::makeDirectory(public_path().'/uploads/history/');
@@ -22,7 +23,7 @@ class HistoryController extends BaseController{
             $history->uri 		=	$uri;
 
             if($history->save()){
-            	return Redirect::to('/tank/'.$tank_id.'/details')
+            	return Redirect::to("/user/".$user_id."/tank/".$tank_id.'/details')
             					->with('hus','Report saved successfully');
             }else{
             	return "Unable to save";

@@ -9,6 +9,7 @@ class SpecificationController extends BaseController{
 		$tankshape 	=	Input::get('tankshape');
 		$titled 	=	Input::get('titled');
 		$internal 	=	Input::get('internal');
+		$userid     =   Input::get('userid');
 
 		$id 		=	Input::get('tankid');
 		$tank 		=	TankSpecs::where('tank_id','=',$id)->get()->first();
@@ -20,7 +21,7 @@ class SpecificationController extends BaseController{
 		$tank->internal 	=	$internal;
 
 		if($tank->save()){
-			return Redirect::to("/tank/".$id."/details");
+			return Redirect::to("/user/".$userid."/tank/".$id."/details");
 		}
 
 	}

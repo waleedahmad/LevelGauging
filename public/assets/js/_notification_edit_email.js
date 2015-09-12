@@ -4,7 +4,8 @@ $(".edit-notifications").on('click', function(){
 		name 			=	$(this).attr('data-name'),
         tankid			=	$('meta[name=tankid]').attr("content"),
 		submit_color 	=	'',
-		header 			=	'';
+		header 			=	'',
+		user_id         =   $('meta[name=userid]').attr("content");
 
 	switch (name) {
 		case 'reporting':
@@ -96,6 +97,7 @@ $(".edit-notifications").on('click', function(){
 											+'<input type="hidden" name="id" value="'+id+'">'
                                             +'<input type="hidden" name="tankid" value="'+tankid+'">'
 											+'<input type="hidden" name="type" value="'+name+'">'
+											+'<input type="hidden" name="userid" value="'+user_id+'">'
 										+'</form>'
 									+'</div>'
 								+'</div>'

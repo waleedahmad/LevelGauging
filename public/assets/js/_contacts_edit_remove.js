@@ -85,7 +85,8 @@ function addContactRemoveSubmitEvent(){
 
 function editTankContact(){
     var tankid          =	$('meta[name=tankid]').attr("content"),
-        id              =   $(this).attr('data-id');
+        id              =   $(this).attr('data-id'),
+        user_id         =   $('meta[name=userid]').attr("content");
 
     var $overlay_dom       =   '<div class="overlays">'
 								+'<div class="addcontactform">'
@@ -166,6 +167,7 @@ function editTankContact(){
 											+'<div class="contact-errors"></div>'
 											+'<input type="hidden" name="tankid" value="'+tankid+'">'
                                             +'<input type="hidden" name="id" value="'+id+'">'
+                                            +'<input type="hidden" name="userid" value="'+user_id+'">'
 										+'</form>'
 									+'</div>'
 								+'</div>'
@@ -173,7 +175,7 @@ function editTankContact(){
     $($overlay_dom).hide().appendTo(".wrapper").fadeIn('fast');
 
     addContactsEditOverlayCloseEvent();
-    attactContactFormSubmitEvent();
+    attachContactFormSubmitEvent();
     getDetailsAndFillContactFields(id);
 }
 
@@ -234,4 +236,41 @@ function getContactDeleteAddButton(text , id){
 					+'<polygon fill="#FFFFFF" points="19.7,14.3 15.4,16.7 11,19.1 11,14.3 11,9.5 15.4,11.9 	"/>'
 				+'</g>'
 			+'</svg>');
+}
+
+
+function getContactAddButton(text){
+    return('<?xml version="1.0" encoding="utf-8"?>'
+            +'<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'
+            +'<svg version="1.1" id="s-c-form" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
+                +'viewBox="0 0 80.8 27.7" enable-background="new 0 0 80.8 27.7" xml:space="preserve">'
+                +'<g>'
+                    +'<rect x="0.5" y="0.4" fill="#839D3C" stroke="#F3F8F9" stroke-miterlimit="10" width="80.3" height="27.2"/>'
+                    +'<g>'
+                        +'<rect x="28.6" y="9.8" fill="none" width="68.2" height="29.8"/>'
+                        +'<text transform="matrix(1 0 0 1 28.5552 17.8945)" fill="#FFFFFF" font-size="12.1205">'+text+'</text>'
+                    +'</g>'
+                    +'<polygon fill="#FFFFFF" points="19.7,14.3 15.4,16.7 11,19.1 11,14.3 11,9.5 15.4,11.9  "/>'
+                +'</g>'
+            +'</svg>');
+}
+
+function attachContactFormSubmitEvent(){
+    $("#s-c-form").on('click', function(e){
+        var $title      =   $.trim($("#title").val()),
+            $name       =   $.trim($("#name").val()),
+            $j_title    =   $.trim($("#job-title").val()),
+            $company    =   $.trim($("#company").val()),
+            $phone1     =   $.trim($("#phone1").val()),
+            $phone2     =   $.trim($("#phone2").val()),
+            $email      =   $.trim($("#email").val());
+
+        if(!$title.length || !$name.length || !$j_title.length || !$company.length || !$phone1.length || !$email.length){
+            console.log("All Fields Required");
+            console.log($title.length , $name.length ,$j_title.length ,$company.length ,$phone1.length ,$email.length);
+            $(".contact-errors").text("All fields required.");
+        }else{
+            $(".contact-form > form").submit();
+        }
+    });
 }

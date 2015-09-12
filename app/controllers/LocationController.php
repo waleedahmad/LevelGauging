@@ -13,6 +13,7 @@ class LocationController extends BaseController{
 		$postcode		=	Input::get('postcode');
 		$country		=	Input::get('country');
 		$tankid			=	Input::get('tankid');
+		$userid    				=   Input::get('userid');
 
 		$id 			=	Input::get('tankid');
 		$tank 			=	TankLocation::where('tank_id','=',$id)->get()->first();
@@ -27,7 +28,7 @@ class LocationController extends BaseController{
 		$tank->country			=	$country;
 
 		if($tank->save()){
-			return Redirect::to("/tank/".$id."/details");
+			return Redirect::to("/user/".$userid."/tank/".$id."/details");
 		}
 	}
 

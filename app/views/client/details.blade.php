@@ -157,6 +157,7 @@
                             <span id="filename">Upload new File</span>
                             <label for="file-upload">Browse<input type="file" name="history" id="file-upload"></label>
                             <input name="tankid" type="hidden" value="{{$tank->id}}">
+                            <input type="hidden" name="userid" value="{{$user_id}}">
                         </form>
                     </div>
 

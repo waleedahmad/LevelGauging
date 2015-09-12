@@ -14,6 +14,10 @@
 		@if(isset($tank->id))
 		<meta name="tankid" content="{{$tank->id}}">
 		@endif
+
+		@if(isset($user_id))
+		<meta name="userid" content="{{$user_id}}">
+		@endif
 	</head>
 	<body>
 		<div class="wrapper">

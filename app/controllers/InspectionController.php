@@ -14,6 +14,7 @@ class InspectionController extends BaseController{
 		$d_inspected 			=	Input::get('d-inspected');
 		$d_cleaned 				=	Input::get('d-cleaned');
 		$nex_inspection 		=	Input::get('d-next-inspection');
+		$userid    				=   Input::get('userid');
 
 		$tank->contractor		=	$contractor;
 		$tank->phone			=	$telephone;
@@ -23,7 +24,7 @@ class InspectionController extends BaseController{
 		$tank->next_inspection 	=	$nex_inspection;
 
 		if($tank->save()){
-			return Redirect::to("/tank/".$id."/details");
+			return Redirect::to("/user/".$userid."/tank/".$id."/details");
 		}
 	}
 

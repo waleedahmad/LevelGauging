@@ -11,6 +11,7 @@ class NotificationController extends BaseController{
 		$date 		=	Input::get('date');
 		$tankid 	=	Input::get('tankid');
 		$type 		=	Input::get('type');
+		$userid     =   Input::get('userid');
 		
 		$notify 				=	new NotifyEmail;
 		$notify->tank_id 		=	$tankid;
@@ -22,7 +23,7 @@ class NotificationController extends BaseController{
 		$notify->date 			=	$date;
 
 		if($notify->save()){
-			return Redirect::to("/tank/".$tankid."/notifications");
+			return Redirect::to("/user/".$userid."/tank/".$tankid."/notifications");
 		}
 	}
 
@@ -35,6 +36,7 @@ class NotificationController extends BaseController{
 		$id 		=	Input::get('id');
 		$tankid 	=	Input::get('tankid');
 		$type 		=	Input::get('type');
+		$userid     =   Input::get('userid');
 
 		$notify 	=	NotifyEmail::where('id','=',$id)->first();
 		$notify->report_type 	=	$type;
@@ -45,7 +47,7 @@ class NotificationController extends BaseController{
 		$notify->date 			=	$date;
 
 		if($notify->save()){
-			return Redirect::to("/tank/".$tankid."/notifications");
+			return Redirect::to("/user/".$userid."/tank/".$tankid."/notifications");
 		}
 	}
 

@@ -41,6 +41,7 @@
                 </div>
 
                 <div class="data">
+                    @if(isset($d_address))
                     <div class="address">
                         <div class="title">
                             {{$d_address->title}}
@@ -58,6 +59,7 @@
                             @endif  
                         </div>
                     </div>
+                    @endif
                     @foreach($addresses as $address)
                         <div class="address">
                             <div class="title">

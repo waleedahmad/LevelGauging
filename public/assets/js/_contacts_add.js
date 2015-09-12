@@ -1,106 +1,95 @@
-var contact_count  =   $(".address-list").find(".address").length;
+var AddContact 	=	function(){
 
-if(contact_count > 8){
-    $("#add-contact").css({
-        'cursor'    :   'not-allowed'
-    });
-}else{
-    $("#add-contact").on('click', newTankContact);
-}
+	this.getContactsCount 	=	 function(){
+		return $(".address-list").find(".address").length;
+	}
 
-function newTankContact(e){
-    var tankid	          =	$('meta[name=tankid]').attr("content");
+	this.disableAddContact 	=	 function(){
+		$("#add-contact").css({
+	        'cursor'    :   'not-allowed'
+	    });
+	}
 
-    var $overlay_dom       =   '<div class="overlays">'
-								+'<div class="addcontactform">'
-									+'<span class="close">'
-										+'X'
-									+'</span>'
-									+'<h2>Contacts - Add</h2>'
+	this.attachAddContactListner 	=	function(){
+		$("#add-contact").on('click', {context : this } , this.addNewContact);
+	}
 
-									+'<div class="contact-form">'
-										+'<form method="post" action="/contacts/add">'
-											+'<table>'
-												+'<tr class="theader">'
-													+'<td class="spec">'
-														+'Title Header :  '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="title" id="title" placeholder="contact title" required>'
-													+'</td>'
-												+'</tr>'
+	this.addNewContact 		=	function(e){
+		var context 	=	e.data.context;
+		context.getOverlayTemplate(context);
+	}
 
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Name : '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="name" id="name" placeholder="full name" required>'
-													+'</td>'
-												+'</tr>'
+	this.getTankId	 	=	function(){
+		return $('meta[name=tankid]').attr("content");
+	}
 
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Job title : '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="job-title" id="job-title" placeholder="job title" required>'
-													+'</td>'
-												+'</tr>'
+	this.appendOverlayToWrapper 	= function($overlay){
+		$($overlay).hide().appendTo(".wrapper").fadeIn('fast');
+	}
 
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Company : '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="company" id="company" placeholder="company name" required>'
-													+'</td>'
-												+'</tr>'
+	this.init 	=	function(){
+		if(this.getContactsCount() > 8){
+			this.disableAddContact();
+		}else{
+			this.attachAddContactListner();
+		}
+	}
+};
 
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Telephone 1 : '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="phone1" id="phone1" placeholder="phone" required>'
-													+'</td>'
-												+'</tr>'
+$(function(){
+	var add_contact 	=	 new AddContact();
+	add_contact.init();
+}());
 
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Telephone 2 : '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="phone2" id="phone2" placeholder="phone" required>'
-													+'</td>'
-												+'</tr>'
+AddContact.prototype.getOverlayTemplate 	= 	function(context){
+	var tank_id 	=	context.getTankId();
 
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Email : '
-													+'</td>'
-													+'<td>'
-														+'<input type="email" name="email" id="email" placeholder="email" required>'
-													+'</td>'
-												+'</tr>'
-											+'</table>'
-
-                                            +getContactAddButton('Add')
-
-											+'<div class="contact-errors"></div>'
-											+'<input type="hidden" name="tankid" value="'+tankid+'">'
-										+'</form>'
-									+'</div>'
+	var $overlay 	=	'<div class="overlays">'
+							+'<div class="addcontactform">'
+								+context.getOverlayHeader({className : 'close'})
+								+'<div class="contact-form">'
+									+'<form method="post" action="/contacts/add">'
+										+'<table>'
+											+context.getTableRow({tr:{className:'theader'},td:{className:'spec',label:'Title Header   :',input :{type:'text',name: 'title',id :'title',p_holder:'Contact title'}}})
+											+context.getTableRow({tr:{className:''},td:{className:'spec',label:'Name :',input :{type:'text',name: 'name',id :'name',p_holder:'Full name'}}})
+											+context.getTableRow({tr:{className:''},td:{className:'spec',label:'Job title : ',input :{type:'text',name: 'job-title',id :'job-title',p_holder:'job title'}}})
+											+context.getTableRow({tr:{className:''},td:{className:'spec',label:'Company : ',input :{type:'text',name: 'company',id :'company',p_holder:'Company name'}}})
+											+context.getTableRow({tr:{className:''},td:{className:'spec',label:'Telephone 1 :',input :{type:'phone1',name: 'phone1',id :'phone1',p_holder:'Phone'}}})
+											+context.getTableRow({tr:{className:''},td:{className:'spec',label:'Telephone 2 : ',input :{type:'text',name: 'phone2',id :'phone2',p_holder:'Phone'}}})
+											+context.getTableRow({tr:{className:''},td:{className:'spec',label:'Email : ',input :{type:'text',name: 'email',id :'email',p_holder:'email'}}})
+										+'</table>'
+										+context.getSubmitButton('Add')
+										+'<div class="contact-errors"></div>'
+										+'<input type="hidden" name="tankid" value="'+tank_id+'">'
+									+'</form>'
 								+'</div>'
-					        +'</div>';
-    $($overlay_dom).hide().appendTo(".wrapper").fadeIn('fast');
+							+'</div>'
+						+'</div>';
+	context.appendOverlayToWrapper($overlay);
+	context.attachOverlayClose();
+	context.attachFormSubmit();
 
-    addContactsOverlayCloseEvent();
-    attactContactFormSubmitEvent();
 }
 
-function attactContactFormSubmitEvent() {
-    $("#s-c-form").on('click', function(e){
+AddContact.prototype.getOverlayHeader 	=	 function(data){
+	return('<span class="'+data.className+'">X</span>'
+			+'<h2>Contacts - Add</h2>'
+			);
+}
+
+AddContact.prototype.getTableRow 		=	function(data){
+	return ('<tr class="'+data.tr.className+'">'
+				+'<td class="'+data.td.className+'">'
+					+data.td.label
+				+'</td>'
+				+'<td>'
+					+'<input type="'+data.td.input.type+'" name="'+data.td.input.name+'" id="'+data.td.input.id+'" placeholder="'+data.td.input.p_holder+'" required>'
+				+'</td>'
+			+'</tr>');
+}
+
+AddContact.prototype.attachFormSubmit 	=	 function(){
+	$("#s-c-form").on('click', function(e){
 		var $title 		=	$.trim($("#title").val()),
 			$name		=	$.trim($("#name").val()),
 			$j_title  	=	$.trim($("#job-title").val()),
@@ -109,10 +98,9 @@ function attactContactFormSubmitEvent() {
             $phone2 	=	$.trim($("#phone2").val()),
             $email 		=	$.trim($("#email").val());
 
-
-
 		if(!$title.length || !$name.length || !$j_title.length || !$company.length || !$phone1.length || !$email.length){
 			console.log("All Fields Required");
+			console.log($title.length , $name.length ,$j_title.length ,$company.length ,$phone1.length ,$email.length);
 			$(".contact-errors").text("All fields required.");
 		}else{
             $(".contact-form > form").submit();
@@ -120,7 +108,7 @@ function attactContactFormSubmitEvent() {
 	});
 }
 
-function addContactsOverlayCloseEvent(){
+AddContact.prototype.attachOverlayClose = 	function(){
 	$(".overlays > .addcontactform > .close").on('click', function(e){
 		$(".overlays").fadeOut('fast', function(e){
 			$(this).remove();
@@ -128,7 +116,7 @@ function addContactsOverlayCloseEvent(){
 	});
 }
 
-function getContactAddButton(text){
+AddContact.prototype.getSubmitButton 	=	function(text){
 	return('<?xml version="1.0" encoding="utf-8"?>'
 			+'<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'
 			+'<svg version="1.1" id="s-c-form" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'

@@ -182,72 +182,260 @@ AddContact.prototype.getSubmitButton 	=	function(text){
 				+'</g>'
 			+'</svg>');
 }
-$(".contact-checkbox").on('click', function(e){
-    var $target     =   $(this),
-        $id         =   $($target).attr('data-id');
+var EditContact     =   function(){
 
-    $('.contact-checkbox').not($target).prop('checked', false);
+    this.uncheckAllExceptTarget         =   function($target){
+        $('.contact-checkbox').not($target).prop('checked', false);
+    };
 
-    if($('.contact-checkbox:checked').length){
+    this.handleContactBoxTrigger        =   function(e){
+        var context     =   e.data.context,
+            $id         =   $(this).attr('data-id');
+        context.uncheckAllExceptTarget(this);
+
+        if(context.getCheckCount()){
+            context.allowActionButtons(context ,this, $id);
+        }else{
+            context.restrictAllowButtons(context,this , $id);
+        }
+    };
+
+    this.allowActionButtons = function(context,target, $id){
+        context.setAllowCursor();
+        context.setDataAttributes($id);
+        context.bindActions(context);
+    };
+
+    this.restrictAllowButtons   =   function(context,target, $id){
+        context.setRestrictCursor();
+        context.removeDataAttributes();
+        context.unBindActions(context);
+    };
+
+    this.bindActions        =   function(context){
+        $("#edit-contact").on('click', {context : context}  ,context.editTankContact);
+        $("#remove-contact").on('click', {context : context} ,  context.removeTankContact);
+    };
+
+    this.unBindActions      =   function(context){
+        $("#edit-contact").unbind('click', context.editTankContact);
+        $("#remove-contact").unbind('click',context.removeTankContact);
+    };
+
+    this.appendOverlayToWrapper     = function($overlay){
+        $($overlay).hide().appendTo(".wrapper").fadeIn('fast');
+    }
+
+    this.setAllowCursor =   function(){
         $("#edit-contact, #remove-contact").css({
             'cursor'    :   'pointer'
         });
+    };
 
-        $("#edit-contact").attr('data-id',$id);
-        $("#remove-contact").attr('data-id',$id);
-
-        $("#edit-contact").on('click', editTankContact);
-        $("#remove-contact").on('click', removeTankContact);
-
-    }else{
+    this.setRestrictCursor  =   function(){
         $("#edit-contact, #remove-contact").css({
             'cursor'    :   'not-allowed'
         });
+    };
 
-        $("#edit-contact").attr('data-id','');
-        $("#remove-contact").attr('data-id','');
-        $("#edit-contact").unbind('click', editTankContact);
-        $("#remove-contact").unbind('click', removeTankContact);
+    this.setDataAttributes=  function($id){
+        $("#edit-contact").attr('data-id',$id);
+        $("#remove-contact").attr('data-id',$id);
+    };
+
+    this.removeDataAttributes  =   function(){
+        $("#edit-contact").attr('data-id'   ,'');
+        $("#remove-contact").attr('data-id' ,'');
+    };
+
+    this.getCheckCount  =   function(){
+        return $('.contact-checkbox:checked').length;
+    };
+
+    this.attachCheckBoxesEventHandlers  =    function(){
+        $(".contact-checkbox").on('click', {context : this}, this.handleContactBoxTrigger);
+    };
+
+    this.getTankId  =    function(){
+        return $('meta[name=tankid]').attr("content");
     }
-});
 
-function removeTankContact(){
-    var id              =   $(this).attr('data-id');
+    this.getUserId  =    function(){
+        return $('meta[name=userid]').attr("content");
+    }
 
-    var $overlay_dom       =   '<div class="overlays">'
-                                    +'<div class="confirm-remove">'
-                                            +'<span class="close">'
-                                                +'X'
-                                            +'</span>'
-                                        +'<h2>Contacts - Remove</h2>'
+    this.init   =   function(){
+        this.attachCheckBoxesEventHandlers();
+    };
+};
 
-                                        +'<div class="dialogue">'
-                                            +'<div class="left">'
-                                                +'<p>Are you sure you want to remove contact from this list</p>'
-                                            +'</div>'
+$(function(){
+    edit_contact    =    new EditContact();
+    edit_contact.init();
+}());
 
-                                            +'<div class="right">'
-                                                +getContactDeleteAddButton('Update',id)
-                                            +'</div>'
-                                        +'<div>'
+
+EditContact.prototype.editTankContact    =    function(e){
+    var context     =   e.data.context,
+        tank_id     =   context.getTankId(),
+        user_id     =   context.getUserId(),
+        id          =   $(this).attr('data-id');
+
+    var $overlay    =   '<div class="overlays">'
+                            +'<div class="addcontactform">'
+                                +context.getOverlayHeader({className : 'close'})
+                                +'<div class="contact-form">'
+                                    +'<form method="post" action="/contacts/update">'
+                                        +'<table>'
+                                            +context.getTableRow({tr:{className:'theader'},td:{className:'spec',label:'Title Header   :',input :{type:'text',name: 'title',id :'title',p_holder:'Contact title'}}})
+                                            +context.getTableRow({tr:{className:''},td:{className:'spec',label:'Name :',input :{type:'text',name: 'name',id :'name',p_holder:'Full name'}}})
+                                            +context.getTableRow({tr:{className:''},td:{className:'spec',label:'Job title : ',input :{type:'text',name: 'job-title',id :'job-title',p_holder:'job title'}}})
+                                            +context.getTableRow({tr:{className:''},td:{className:'spec',label:'Company : ',input :{type:'text',name: 'company',id :'company',p_holder:'Company name'}}})
+                                            +context.getTableRow({tr:{className:''},td:{className:'spec',label:'Telephone 1 :',input :{type:'phone1',name: 'phone1',id :'phone1',p_holder:'Phone'}}})
+                                            +context.getTableRow({tr:{className:''},td:{className:'spec',label:'Telephone 2 : ',input :{type:'text',name: 'phone2',id :'phone2',p_holder:'Phone'}}})
+                                            +context.getTableRow({tr:{className:''},td:{className:'spec',label:'Email : ',input :{type:'text',name: 'email',id :'email',p_holder:'email'}}})
+                                        +'</table>'
+                                        +context.getSubmitButton('Update')
+                                        +'<div class="contact-errors"></div>'
+                                        +'<input type="hidden" name="tankid" value="'+tank_id+'">'
+                                        +'<input type="hidden" name="userid" value="'+user_id+'">'
+                                        +'<input type="hidden" name="id" value="'+id+'">'
+                                    +'</form>'
+                                +'</div>'
+                            +'</div>'
+                        +'</div>';
+    context.appendOverlayToWrapper($overlay);
+    context.attachOverlayClose(context);
+    context.attachFormSubmit();
+    context.getFormFields(context,id);
+}
+
+EditContact.prototype.getFormFields  =   function(context,_id){
+    $.ajax({
+        type : 'POST',
+        url  : '/contacts/details',
+        data : {
+            id  :   _id
+        },
+        success : function(res){
+            context.setFormFields(res);
+        }
+    });
+};
+
+EditContact.prototype.setFormFields     =   function(res){
+    $("#title").val(res.title);
+    $("#name").val(res.name);
+    $("#job-title").val(res.job_title);
+    $("#company").val(res.company);
+    $("#phone1").val(res.telephone_1);
+    $("#phone2").val(res.telephone_2);
+    $("#email").val(res.email);
+    $("#email").val(res.email);
+};
+
+EditContact.prototype.getOverlayHeader   =    function(data){
+    return('<span class="'+data.className+'">X</span>'
+            +'<h2>Contacts - Add</h2>'
+            );
+}
+
+EditContact.prototype.getTableRow        =   function(data){
+    return ('<tr class="'+data.tr.className+'">'
+                +'<td class="'+data.td.className+'">'
+                    +data.td.label
+                +'</td>'
+                +'<td>'
+                    +'<input type="'+data.td.input.type+'" name="'+data.td.input.name+'" id="'+data.td.input.id+'" placeholder="'+data.td.input.p_holder+'" required>'
+                +'</td>'
+            +'</tr>');
+}
+
+EditContact.prototype.attachFormSubmit   =    function(){
+    $("#s-c-form").on('click', function(e){
+        var $title      =   $.trim($("#title").val()),
+            $name       =   $.trim($("#name").val()),
+            $j_title    =   $.trim($("#job-title").val()),
+            $company    =   $.trim($("#company").val()),
+            $phone1     =   $.trim($("#phone1").val()),
+            $phone2     =   $.trim($("#phone2").val()),
+            $email      =   $.trim($("#email").val());
+
+        if(!$title.length || !$name.length || !$j_title.length || !$company.length || !$phone1.length || !$email.length){
+            console.log("All Fields Required");
+            console.log($title.length , $name.length ,$j_title.length ,$company.length ,$phone1.length ,$email.length);
+            $(".contact-errors").text("All fields required.");
+        }else{
+            $(".contact-form > form").submit();
+        }
+    });
+}
+
+EditContact.prototype.attachOverlayClose =   function(context){
+    $(".overlays > .addcontactform > .close").on('click', function(e){
+        $(".overlays").fadeOut('fast', function(e){
+            $(this).remove();
+        });
+    });
+    context.unBindActions(context);
+    context.setRestrictCursor();
+    context.uncheckAllExceptTarget('');
+}
+
+EditContact.prototype.getSubmitButton    =   function(text){
+    return('<?xml version="1.0" encoding="utf-8"?>'
+            +'<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'
+            +'<svg version="1.1" id="s-c-form" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
+                +'viewBox="0 0 80.8 27.7" enable-background="new 0 0 80.8 27.7" xml:space="preserve">'
+                +'<g>'
+                    +'<rect x="0.5" y="0.4" fill="#839D3C" stroke="#F3F8F9" stroke-miterlimit="10" width="80.3" height="27.2"/>'
+                    +'<g>'
+                        +'<rect x="28.6" y="9.8" fill="none" width="68.2" height="29.8"/>'
+                        +'<text transform="matrix(1 0 0 1 28.5552 17.8945)" fill="#FFFFFF" font-size="12.1205">'+text+'</text>'
+                    +'</g>'
+                    +'<polygon fill="#FFFFFF" points="19.7,14.3 15.4,16.7 11,19.1 11,14.3 11,9.5 15.4,11.9  "/>'
+                +'</g>'
+            +'</svg>');
+}
+
+EditContact.prototype.removeTankContact  =    function(e){
+    var context     =   e.data.context,
+        id          =   $(this).attr('data-id');
+
+    var $overlay    =   '<div class="overlays">'
+                            +'<div class="confirm-remove">'
+                                +'<span class="close">'
+                                    +'X'
+                                +'</span>'
+                                +'<h2>Contacts - Remove</h2>'
+
+                                +'<div class="dialogue">'
+                                    +'<div class="left">'
+                                        +'<p>Are you sure you want to remove contact from this list</p>'
                                     +'</div>'
-                                +'</div>';
-    $($overlay_dom).hide().appendTo(".wrapper").fadeIn('fast');
+                                    +'<div class="right">'
+                                        +context.getDeleteButton('Update',id)
+                                    +'</div>'
+                                +'<div>'
+                            +'</div>'
+                        +'</div>';
+    context.appendOverlayToWrapper($overlay);
+    context.attachRemoveOverlayClose(context);
+    context.submitRemoveRequest();
+};
 
-    addContactsRemoveOverlayCloseEvent();
-    addContactRemoveSubmitEvent();
-}
-
-function addContactsRemoveOverlayCloseEvent(){
+EditContact.prototype.attachRemoveOverlayClose =    function(context){
     $(".overlays > .confirm-remove > .close").on('click', function(e){
-		$(".overlays").fadeOut('fast', function(e){
-			$(this).remove();
-		});
-	});
-    removeEditRemoveButtonEvents();
+        $(".overlays").fadeOut('fast', function(e){
+            $(this).remove();
+        });
+    });
+    context.unBindActions(context);
+    context.setRestrictCursor();
+    context.uncheckAllExceptTarget('');
 }
 
-function addContactRemoveSubmitEvent(){
+EditContact.prototype.submitRemoveRequest   =   function(){
     $("#d-c-form").on('click', function(){
         var $target =   $(this),
             _id     =   $($target).attr('data-id');
@@ -267,166 +455,10 @@ function addContactRemoveSubmitEvent(){
     });
 }
 
-function editTankContact(){
-    var tankid          =	$('meta[name=tankid]').attr("content"),
-        id              =   $(this).attr('data-id'),
-        user_id         =   $('meta[name=userid]').attr("content");
-
-    var $overlay_dom       =   '<div class="overlays">'
-								+'<div class="addcontactform">'
-									+'<span class="close">'
-										+'X'
-									+'</span>'
-									+'<h2>Contacts - Add</h2>'
-
-									+'<div class="contact-form">'
-										+'<form method="post" action="/contacts/update">'
-											+'<table>'
-												+'<tr class="theader">'
-													+'<td class="spec">'
-														+'Title Header :  '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="title" id="title" placeholder="contact title" required>'
-													+'</td>'
-												+'</tr>'
-
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Name : '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="name" id="name" placeholder="full name" required>'
-													+'</td>'
-												+'</tr>'
-
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Job title : '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="job-title" id="job-title" placeholder="job title" required>'
-													+'</td>'
-												+'</tr>'
-
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Company : '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="company" id="company" placeholder="company name" required>'
-													+'</td>'
-												+'</tr>'
-
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Telephone 1 : '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="phone1" id="phone1" placeholder="phone" required>'
-													+'</td>'
-												+'</tr>'
-
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Telephone 2 : '
-													+'</td>'
-													+'<td>'
-														+'<input type="text" name="phone2" id="phone2" placeholder="phone" required>'
-													+'</td>'
-												+'</tr>'
-
-                                                +'<tr>'
-													+'<td class="spec">'
-														+'Email : '
-													+'</td>'
-													+'<td>'
-														+'<input type="email" name="email" id="email" placeholder="email" required>'
-													+'</td>'
-												+'</tr>'
-											+'</table>'
-
-                                            +getContactAddButton('Update')
-
-											+'<div class="contact-errors"></div>'
-											+'<input type="hidden" name="tankid" value="'+tankid+'">'
-                                            +'<input type="hidden" name="id" value="'+id+'">'
-                                            +'<input type="hidden" name="userid" value="'+user_id+'">'
-										+'</form>'
-									+'</div>'
-								+'</div>'
-					        +'</div>';
-    $($overlay_dom).hide().appendTo(".wrapper").fadeIn('fast');
-
-    addContactsEditOverlayCloseEvent();
-    attachContactFormSubmitEvent();
-    getDetailsAndFillContactFields(id);
-}
-
-function getDetailsAndFillContactFields(_id){
-    $.ajax({
-        type : 'POST',
-        url  : '/contacts/details',
-        data : {
-            id  :   _id
-        },
-        success : function(res){
-            handleContactFieldsResponse(res);
-        }
-    });
-}
-
-function handleContactFieldsResponse(res){
-    $("#title").val(res.title);
-    $("#name").val(res.name);
-    $("#job-title").val(res.job_title);
-    $("#company").val(res.company);
-    $("#phone1").val(res.telephone_1);
-    $("#phone2").val(res.telephone_2);
-    $("#email").val(res.email);
-    $("#email").val(res.email);
-}
-
-function addContactsEditOverlayCloseEvent(){
-	$(".overlays > .addcontactform > .close").on('click', function(e){
-		$(".overlays").fadeOut('fast', function(e){
-			$(this).remove();
-		});
-	});
-
-    removeEditRemoveButtonEvents();
-}
-
-function removeEditRemoveButtonEvents(){
-    $('.contact-checkbox').prop('checked', false);
-    $("#edit-contact").unbind('click', editTankContact);
-    $("#remove-contact").unbind('click', removeTankContact);
-    $("#edit-contact, #remove-contact").css({
-        'cursor'    :   'not-allowed'
-    });
-}
-
-function getContactDeleteAddButton(text , id){
-	return('<?xml version="1.0" encoding="utf-8"?>'
-			+'<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'
-			+'<svg version="1.1" id="d-c-form" data-id="'+id+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
-		 		+'viewBox="0 0 80.8 27.7" enable-background="new 0 0 80.8 27.7" xml:space="preserve">'
-				+'<g>'
-					+'<rect x="0.5" y="0.4" fill="#839D3C" stroke="#F3F8F9" stroke-miterlimit="10" width="80.3" height="27.2"/>'
-					+'<g>'
-						+'<rect x="28.6" y="9.8" fill="none" width="68.2" height="29.8"/>'
-						+'<text transform="matrix(1 0 0 1 28.5552 17.8945)" fill="#FFFFFF" font-size="12.1205">'+text+'</text>'
-					+'</g>'
-					+'<polygon fill="#FFFFFF" points="19.7,14.3 15.4,16.7 11,19.1 11,14.3 11,9.5 15.4,11.9 	"/>'
-				+'</g>'
-			+'</svg>');
-}
-
-
-function getContactAddButton(text){
+EditContact.prototype.getDeleteButton   =    function(text,id){
     return('<?xml version="1.0" encoding="utf-8"?>'
             +'<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'
-            +'<svg version="1.1" id="s-c-form" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
+            +'<svg version="1.1" id="d-c-form" data-id="'+id+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
                 +'viewBox="0 0 80.8 27.7" enable-background="new 0 0 80.8 27.7" xml:space="preserve">'
                 +'<g>'
                     +'<rect x="0.5" y="0.4" fill="#839D3C" stroke="#F3F8F9" stroke-miterlimit="10" width="80.3" height="27.2"/>'
@@ -437,26 +469,6 @@ function getContactAddButton(text){
                     +'<polygon fill="#FFFFFF" points="19.7,14.3 15.4,16.7 11,19.1 11,14.3 11,9.5 15.4,11.9  "/>'
                 +'</g>'
             +'</svg>');
-}
-
-function attachContactFormSubmitEvent(){
-    $("#s-c-form").on('click', function(e){
-        var $title      =   $.trim($("#title").val()),
-            $name       =   $.trim($("#name").val()),
-            $j_title    =   $.trim($("#job-title").val()),
-            $company    =   $.trim($("#company").val()),
-            $phone1     =   $.trim($("#phone1").val()),
-            $phone2     =   $.trim($("#phone2").val()),
-            $email      =   $.trim($("#email").val());
-
-        if(!$title.length || !$name.length || !$j_title.length || !$company.length || !$phone1.length || !$email.length){
-            console.log("All Fields Required");
-            console.log($title.length , $name.length ,$j_title.length ,$company.length ,$phone1.length ,$email.length);
-            $(".contact-errors").text("All fields required.");
-        }else{
-            $(".contact-form > form").submit();
-        }
-    });
 }
 $( "#datefrom" ).datepicker({ dateFormat: 'yy-mm-dd' });
 $( "#dateto" ).datepicker({ dateFormat: 'yy-mm-dd' });

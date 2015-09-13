@@ -4,6 +4,12 @@
     <div class="search-options">
         <p>Filter:</p> <span class="all active">All</span> <span class="enabled">Enabled</span> <span class="disabled">Disabled</span>
     </div>
+
+    <div class="search-results">
+        <div class="s-header">
+            <span class='glyphicon glyphicon-user' aria-hidden='true'></span> Search Results
+        </div>
+    </div>
     <ul>
     <?php
         $users  =   User::where('type','=','user')->get();
@@ -16,9 +22,8 @@
                 }else{
                     echo "<a href='/users/".$user->email."/authorize'><li> <span class='glyphicon glyphicon-user' aria-hidden='true'></span><span class='email'>".substr($user->email,0,15)." </span></li></a>";
                 }
+
             }
-
-
         }else{
             echo "No Tanks";
         }

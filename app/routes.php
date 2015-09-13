@@ -92,6 +92,11 @@ Route::group(['before'	=>	'auth'], function(){
 		'uses'	=>	'AccountController@alreadyExist'
 	]);
 
+	Route::post('/user/search',[
+		'as'	=>	'user-search',
+		'uses'	=>	'AccountController@userSearch'
+	]);
+
 	Route::get('/logout', [
 		'as' => 'logout',
 		 'uses' => 'AccountController@logout'

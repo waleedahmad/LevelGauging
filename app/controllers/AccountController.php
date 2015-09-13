@@ -145,4 +145,12 @@ class AccountController extends BaseController
             return Response::json(true);
         }
     }
+
+    public function userSearch(){
+        $search     =   Input::get('search');
+
+        $users      =   User::where('email','LIKE',$search.'%')->get()->lists('email');
+
+        return Response::json($users);
+    }
 }

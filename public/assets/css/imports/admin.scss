@@ -165,6 +165,24 @@
             }
         }
 
+        .search-results{
+            width: 210px;
+            margin-bottom : 10px;
+            display: none;
+
+            .s-header{
+                font-size: 14px;
+                padding-left : 5px;
+                color: #788838;
+                font-weight: bold;
+                border-bottom : 1px solid  #a4be47;
+                clear: both;
+            }
+
+            border-bottom : 1px solid  #a4be47;
+            padding-bottom: 5px;
+        }
+
         ul,
         li {
             list-style: none;
@@ -182,7 +200,7 @@
                 width: 210px;
                 height: 45px;
                 color: white;
-                padding-top: 10px;
+                padding-top: 5px;
                 padding-left: 10px;
                 font-size: 22px;
 

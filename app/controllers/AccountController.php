@@ -96,4 +96,53 @@ class AccountController extends BaseController
     	return Redirect::to('/login')
                 				->with('global', 'Successfully Logged out');
     }
+
+    public function getUserDetails(){
+        $email  =   Input::get('email');
+
+        $user   =    User::where('email','=',$email)->get()->first();
+
+        return Response::json($user);
+    }
+
+    public function alreadyExist(){
+        $email  =   Input::get('email');
+
+        $user   =    User::where('email','=',$email)->get();
+
+        if($user->count()){
+            return Response::json(true);
+        }
+    }
+
+    public function updateUser(){
+
+        $email          =   Input::get('email');
+        $access         =   Input::get('access');
+        $password       =   Input::get('password');
+        $enote          =   Input::get('enote');
+        $owner          =   Input::get('user-email');
+
+        $user           =   User::where('email','=',$owner)->get()->first();
+
+        $user->email        =   $email;
+        $user->approved     =   $access;
+        if($password){
+            $user->password =   Hash::make($password);
+        }
+        $user->enote    =   $enote;
+
+        if($user->save()){
+            return Redirect::to('/users/'.$user->email.'/authorize');
+        }
+    }
+
+    public function deleteUser(){
+        $email     =   Input::get('email');
+        $user      =   User::where('email','=',$email)->get()->first();
+
+        if($user->delete()){
+            return Response::json(true);
+        }
+    }
 }

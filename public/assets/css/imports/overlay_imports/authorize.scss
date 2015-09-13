@@ -1,0 +1,116 @@
+.edit-auth-user{
+	position: fixed;
+    height : 400px;
+    width: 500px;
+    background-color:white;
+    margin : 170px auto auto 500px;
+    color:#788838;
+
+    .close{
+          position: relative;
+          right: -27px;
+          top: -27px;
+          padding-top: 5px;
+          padding-left: 8px;
+          background-color: white;
+          border-radius: 50%;
+          opacity: 1;
+          height: 27px;
+          width: 27px;
+          font-size: 19px;
+          color: grey;
+    }
+
+    h2{
+          padding-left: 20px;
+          margin-top: 10px;
+          font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+
+    .edit-auth-user-form{
+        padding-left: 10px;
+        margin-top: 30px;
+        padding-right: 20px;
+        font-family:"Proxima Nova Regular", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        
+    	
+
+        input{
+            height : 35px;
+            width: 310px;
+            background-color : #ececec;;
+            color:black;
+            border : 1px solid grey;
+            padding-left : 10px;
+        }
+
+        tr{
+			height : 30px;
+			td{
+				padding-top: 10px;
+				padding-bottom:10px;
+				padding-right: 10px;
+
+				&.spec{
+					padding-bottom:10px;
+					padding-right: 10px;
+					padding-left: 10px;
+					font-size : 20px;
+					font-family:"Proxima Nova Regular", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+					display: block;
+					width: 150px;
+				}
+			}
+
+		}
+
+        select{
+			height: 30px;
+			background-color: #ececec;;
+			width: 200px;
+			border: 0px;
+			color:black;
+			padding-left : 10px;
+		}
+
+		textarea{
+			resize: none;
+			height: 30px;
+			background-color: #ececec;;
+			width: 310px;
+			height : 100px;
+			border: 0px;
+			color:black;
+			padding-left : 10px;
+			border : 1px solid grey;
+            padding-left : 10px;
+            padding-top : 10px;
+		}
+
+
+
+        .form-errors{
+            width: 300px;
+            height : 20px;
+            color:red;
+            padding: 10px;
+            padding-left: 15px;
+            font-size: 14px;
+        }
+
+        svg{
+              g{
+                  fill : #1376A1;
+              }
+              width: 100px;
+              height : 30px;
+              float:right;
+              cursor : pointer;
+              font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+              text{
+                    font-size: 12px;
+              }
+        }
+    }
+}

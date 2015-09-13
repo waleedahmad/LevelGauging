@@ -38,18 +38,26 @@
 	           				<thead>
 	           					<tr>
 		           					<th>Access</th>
-		           					<th>User ID</th>
 		           					<th>Password</th>
 		           					<th class="notes">eNotes</th>
 		           					<th></th>
 		           				</tr>
 	           				</thead>
+
+	           				<?php 
+	           					$user 	=	User::where('email','=',$user_email)->get()->first();
+	           				 ?>
 	           				<tbody>
 	           					<tr>
-		           					<td>Access</td>
-		           					<td>User ID</td>
-		           					<td>Password</td>
-		           					<td class="notes">Payment pending for this week!</td>
+		           					<td>
+		           						@if($user->approved)
+		           							Enabled
+		           						@else
+		           							Disabled
+		           						@endif
+		           					</td>
+		           					<td>*******</td>
+		           					<td class="notes">@if(strlen($user->enote) > 30) {{substr($user->enote,0,30)}}... @else {{$user->enote}}@endif</td>
 
 		           					<td class="actions">
 		           						<div class="left admin-edit-user" data-email="{{$user_email}}">

@@ -72,7 +72,25 @@ Route::group(['before'	=>	'auth'], function(){
 		'uses'	=>	'AdminController@userTankSettings'
 	]);
 
-	
+	Route::post('/user/details',[
+		'as'	=>	'users-details',
+		'uses'	=>	'AccountController@getUserDetails'
+	]);
+
+	Route::post('/user/update',[
+		'as'	=>	'user-update',
+		'uses'	=>	'AccountController@updateUser'
+	]);
+
+	Route::post('/user/delete',[
+		'as'	=>	'user-delete',
+		'uses'	=>	'AccountController@deleteUser'
+	]);
+
+	Route::post('/user/verify/email',[
+		'as'	=>	'user-verify-email',
+		'uses'	=>	'AccountController@alreadyExist'
+	]);
 
 	Route::get('/logout', [
 		'as' => 'logout',

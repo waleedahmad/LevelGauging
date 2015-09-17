@@ -189,7 +189,16 @@ Route::group(['before'	=>	'auth'], function(){
 		'as'	=>	'location-details',
 		'uses'	=>	'LocationController@getLocationDetails'
 	]);
+});
 
+/**
+* Test Route
+*/
 
+Route::any('/hit/response', function(){
+	return Input::all();
+});
 
+Route::any('/hit/done', function(){
+	return 'done';
 });

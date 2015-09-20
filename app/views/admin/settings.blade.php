@@ -42,7 +42,6 @@
 		           					
 		           					<th>Fuel grade</th>
 		           					<th>Shape</th>
-		           					<th>Company</th>
 		           					<th></th>
 		           				</tr>
 	           				</thead>
@@ -62,7 +61,6 @@
 		           					
 		           					<td>{{$tank_specs->fuel_grade}}</td>
 		           					<td>{{$tank_specs->shape}}</td>
-		           					<td>{{$tank_man->company}}</td>
 		           					<td class="actions">
 		           						<div class="left" data-email="{{$user_email}}">
 											<a target="_blank" href="/user/{{$user_id}}/tank/{{$tank->id}}/dashboard">

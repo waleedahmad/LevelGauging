@@ -64,13 +64,13 @@
 		           					<td>{{$tank_specs->shape}}</td>
 		           					<td>{{$tank_man->company}}</td>
 		           					<td class="actions">
-		           						<div class="left admin-edit-user" data-email="{{$user_email}}">
+		           						<div class="left" data-email="{{$user_email}}">
 											<a target="_blank" href="/user/{{$user_id}}/tank/{{$tank->id}}/dashboard">
 												@include('admin.svgs.edit_contacts')
 											</a>
 		           						</div>
 
-		           						<div class="right admin-remove-user" data-email="{{$user_email}}">
+		           						<div class="right" data-email="{{$user_email}}">
 		           							@include('admin.svgs.delete_contact')
 		           						</div>
 		           					</td>

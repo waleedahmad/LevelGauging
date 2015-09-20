@@ -13,14 +13,15 @@
     <ul>
     <?php
         $users  =   User::where('type','=','user')->get();
+        $active     =   basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
         if($users->count()){
             foreach($users as $user){
                
                 if(isset($user_email) && $user_email === $user->email){
-                    echo "<a href='/users/".$user_email."/authorize'><li class='active'> <span class='glyphicon glyphicon-user' aria-hidden='true'></span><span class='email'>".substr($user->email,0,15)." </span><i class='my-icon'><i></i></i></li></a>";
+                    echo "<a href='/users/".$user_email."/".$active."'><li class='active'> <span class='glyphicon glyphicon-user' aria-hidden='true'></span><span class='email'>".substr($user->email,0,15)." </span><i class='my-icon'><i></i></i></li></a>";
                 }else{
-                    echo "<a href='/users/".$user->email."/authorize'><li> <span class='glyphicon glyphicon-user' aria-hidden='true'></span><span class='email'>".substr($user->email,0,15)." </span></li></a>";
+                    echo "<a href='/users/".$user->email."/".$active."'><li> <span class='glyphicon glyphicon-user' aria-hidden='true'></span><span class='email'>".substr($user->email,0,15)." </span></li></a>";
                 }
 
             }

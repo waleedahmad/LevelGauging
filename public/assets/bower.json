@@ -11,6 +11,7 @@
     "bootstrap": "~3.3.5",
     "highcharts-release": "~4.1.8",
     "jquery": "~2.1.4",
-    "jquery-ui": "~1.11.4"
+    "jquery-ui": "~1.11.4",
+    "jt.timepicker": "jquery-timepicker-jt#~1.8.1"
   }
 }

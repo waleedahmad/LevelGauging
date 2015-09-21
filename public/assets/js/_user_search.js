@@ -77,7 +77,12 @@ var toggleSearch 	=	function(){
 	this.renderSearchResults 	=	 function(res,context){
 		if(res.length){
 			for(var i = 0 ; i < res.length ; i++){
-				var dom 	= 	"<a class='result' href='/users/"+res[i]+"/authorize'><li><span class='glyphicon glyphicon-user' aria-hidden='true'></span><span class='email'>"+res[i].substring(0,20)+"</span></li></a>";
+				var dom 	= 	"<a class='result' href='/users/"+res[i]+"/authorize'>"
+									+"<li>"
+										+"<span class='glyphicon glyphicon-user' aria-hidden='true'></span>"
+										+"<span class='email'>"+res[i].substring(0,15)+"</span>"
+									+"</li>"
+								+"</a>";
 				$(dom).appendTo('.search-results');
 				$('.search-results').slideDown();
 			}

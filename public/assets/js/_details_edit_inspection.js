@@ -142,7 +142,7 @@ EditTankInspection.prototype.getSubmitButton    =   function(text){
             +'<svg version="1.1" id="t-i-form" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
                 +'viewBox="0 0 80.8 27.7" enable-background="new 0 0 80.8 27.7" xml:space="preserve">'
                 +'<g>'
-                    +'<rect x="0.5" y="0.4" fill="#1376A1;" stroke="#F3F8F9" stroke-miterlimit="10" width="80.3" height="27.2"/>'
+                    +'<rect x="0.5" y="0.4" fill="#839D3C;" stroke="#F3F8F9" stroke-miterlimit="10" width="80.3" height="27.2"/>'
                     +'<g>'
                         +'<rect x="28.6" y="9.8" fill="none" width="68.2" height="29.8"/>'
                         +'<text transform="matrix(1 0 0 1 28.5552 17.8945)" fill="#FFFFFF" font-size="12.1205">'+text+'</text>'

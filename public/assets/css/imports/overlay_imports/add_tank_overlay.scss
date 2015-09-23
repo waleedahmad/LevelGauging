@@ -1,6 +1,6 @@
-.addcontactform{
+.add-tank-form{
     position: fixed;
-    height : 480px;
+    height : 430px;
     width: 500px;
     background-color:white;
     margin : 170px auto auto 500px;
@@ -27,7 +27,7 @@
           font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
     }
 
-    .contact-form{
+    .addtank-form{
         padding-left: 10px;
         margin-top: 10px;
         padding-right: 20px;
@@ -43,6 +43,15 @@
             background-color : #ececec;;
             color:black;
             border : 1px solid grey;
+            padding-left : 10px;
+        }
+
+        select{
+            height: 30px;
+            background-color: #ececec;;
+            width: 240px;
+            border: 0px;
+            color:black;
             padding-left : 10px;
         }
 
@@ -65,7 +74,7 @@
             }
         }
 
-        .contact-errors{
+        .errors{
             width: 300px;
             height : 20px;
             color:red;

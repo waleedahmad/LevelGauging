@@ -30,11 +30,18 @@
            			<div class="title">
 	           			Tank Settings
 	           		</div>
+
+	           		@if(isset($user_email))
+						<div class="add-tank" data-email="{{$user_email}}">
+							@include('admin.svgs.add_tank')
+	           			</div>
+					@endif
            		</div>
 
            		<div class="body">
            			<div class="table">
            			@if(isset($user_email))
+           				@if(count($tanks))
            				<table>
 	           				<thead>
 	           					<tr>
@@ -42,23 +49,18 @@
 		           					
 		           					<th>Fuel grade</th>
 		           					<th>Shape</th>
-		           					<th></th>
+		           					<th>Actions</th>
 		           				</tr>
 	           				</thead>
 	           				<tbody>
 	           					@foreach($tanks as $tank)
 			           			<?php 
 			           				$tank_specs 	=	TankSpecs::where('tank_id','=',$tank->id)->get()->first();
-			           				$tank_loc 		=	TankLocation::where('tank_id','=',$tank->id)->get()->first();
-			           				$tank_man 		=	TankManufacturer::where('tank_id','=',$tank->id)->get()->first();
-			           				$tank_levels 	=	TankLevels::where('tank_id','=',$tank->id)->get()->first();
-			           				$tank_inspect 	=	TankInspection::where('tank_id','=',$tank->id)->get()->first();
 			           				$user_id 		=	User::where('email','=',$tank->owner)->first()->id;
 			           			?>
 
 			           			<tr>
 		           					<td>{{$tank_specs->marking_id}}</td>
-		           					
 		           					<td>{{$tank_specs->fuel_grade}}</td>
 		           					<td>{{$tank_specs->shape}}</td>
 		           					<td class="actions">
@@ -76,6 +78,16 @@
 			           			@endforeach
 	           				</tbody>
 	           			</table>
+	           			@else
+	           				<div class="no-tanks">
+	           					<div class="message">
+	           						User <span class="user">{{$user_email}}</span> has no tanks assoiated with their account.
+	           					</div>
+	           					<div class="add-tank" data-email="{{$user_email}}">
+									@include('admin.svgs.add_tank')
+			           			</div>
+	           				</div>
+	           			@endif
 	           		@endif
            			</div>
            		</div>

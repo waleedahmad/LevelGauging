@@ -112,6 +112,16 @@ Route::group(['before'	=>	'auth'], function(){
 		'uses'	=>	'HistoryController@deleteHistory'
 	]);
 
+	Route::post('/tanks/add', [
+		'as'	=>	'add-tanks',
+		'uses'	=> 	'TankController@addTank'
+	]);
+
+	Route::post('/tanks/remove', [
+		'as'	=>	'remove-tanks',
+		'uses'	=> 	'TankController@removeTank'
+	]);
+
 
 	Route::post('/notifications/add/email', [
 		'as'	=>	'notification-add-repoting',

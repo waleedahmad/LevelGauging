@@ -48,6 +48,21 @@
                         font-size: 24px;
                         margin-left: 20px;
                     }
+
+                    .add-tank{
+                        width: 100px;
+                        height: 30px;
+                        float:right;
+                        margin-right: 20px;
+                        margin-top: 5px;
+                        cursor: pointer;
+                        svg{
+                            width: 100px;
+                            text{
+                                font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                            }
+                        }
+                    }
                 }
 
                 .body{
@@ -59,6 +74,33 @@
                     padding-top: 50px;
 
                     .table{
+                        .no-tanks{
+                            font-size : 20px;
+                            color : #788838;
+                            width: 90%;
+                            margin : 0px auto;
+                            text-align: center;
+
+                            .message{
+                                .user{
+                                    border-bottom: 1px solid  #788838;
+                                }
+                            }
+
+                            .add-tank{
+                                margin: 30px auto;
+                                width: 150px;
+                                height: 30px;
+                                cursor: pointer;
+                                svg{
+                                    width: 150px;
+                                    text{
+                                        font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                                    }
+                                }
+                            }
+                        }
+
                         table{
                             thead{
                                 th{
@@ -93,7 +135,7 @@
                                     &.actions{
                                         width: 300px;
                                         padding-top: 5px;
-                                        padding-left: 20px;
+                                        
                                         svg{
                                             width: 100px;
                                             height : 30px;

@@ -40,7 +40,7 @@
 		           					<th>Access</th>
 		           					<th>Password</th>
 		           					<th class="notes">eNotes</th>
-		           					<th></th>
+		           					<th>Actions</th>
 		           				</tr>
 	           				</thead>
 

@@ -34,6 +34,6 @@
 	<script type="text/javascript" src="/assets/bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="/assets/bower_components/jquery-ui/ui/minified/datepicker.min.js"></script>
 	<script type="text/javascript" src="/assets/bower_components/jt.timepicker/jquery.timepicker.min.js"></script>
-	<script type="text/javascript" src="/assets/build/js/app.min.js"></script>
+	<script type="text/javascript" src="/assets/build/js/app.js"></script>
 
 </html>

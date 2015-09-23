@@ -61,7 +61,7 @@ EditTankInspection.prototype.renderOverlayForm = function(id, user_id, context){
 	context.showOverLayDom($overlay_dom);
 	context.attachOverlayClose();
 	context.attachDateTimePickerEvents();
-	context.attachSubmitFormEvent();
+	context.attachSubmitFormEvent(context);
 	context.getFieldData(context,id);
 };
 
@@ -77,8 +77,7 @@ EditTankInspection.prototype.attachDateTimePickerEvents = function(){
 	$( "#date-inspected,#date-cleaned, #next-inspection" ).datepicker({ dateFormat: 'yy-mm-dd' });
 }
 
-EditTankInspection.prototype.attachSubmitFormEvent = function(){
-	console.log("Attached");
+EditTankInspection.prototype.attachSubmitFormEvent = function(context){
 	$("#t-i-form").on('click', function(e){
 		var $contactor	=	$.trim($("#contractor").val()),
 			$phone		=	$.trim($("#telephone").val()),
@@ -86,14 +85,12 @@ EditTankInspection.prototype.attachSubmitFormEvent = function(){
 			$d_ins 		=	$.trim($("#date-inspected").val()),
 			$d_cle 		=	$.trim($("#date-cleaned").val()),
 			$d_n_ins	=	$.trim($("#next-inspection").val());
-			
-			
-
+		
 		if(!$contactor.length || !$phone.length || !$email.length || !$d_ins.length || !$d_cle.length || !$d_n_ins.length){
 			console.log("All Fields Required");
 			$(".reporting-errors").text("All fields required.");
 		}else{
-			if(!validateEmail($email)){
+			if(!context.validateEmail($email)){
 				$(".reporting-errors").text("Invalid Email.");
 			}else{
 				var tankid	=	$('meta[name=tankid]').attr("content");
@@ -102,6 +99,11 @@ EditTankInspection.prototype.attachSubmitFormEvent = function(){
 		}
 	});
 }
+
+EditTankInspection.prototype.validateEmail = function(email){
+	var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
+};
 
 EditTankInspection.prototype.getFieldData = function(context,id){
 	$.ajax({

@@ -1,27 +1,9 @@
-$(".edit-notifications").on('click', function(){
-    var $target         =   $(this),
-        id              =   $($target).attr('data-id'),
-		name 			=	$(this).attr('data-name'),
-        tankid			=	$('meta[name=tankid]').attr("content"),
-		submit_color 	=	'',
-		header 			=	'',
-		user_id         =   $('meta[name=userid]').attr("content");
+TankNotifications.prototype.renderEditOverlayForm = function(context,name,id){
+	var 	tankid 	=	context.getTankId(),
+			user_id = 	context.getUserId(),
+			header 	=	context.header,
+			color 	=	context.submitButtonColor;
 
-	switch (name) {
-		case 'reporting':
-			color 	=	'#839D3C';
-			header 	=	'Email Reporting - Edit';
-			break;
-		case 'levels':
-			color 	=	'#839D3C';
-			header 	=	'Level alert - Edit';
-			break;
-		case 'inspection':
-			color 	=	'#1376A1';
-			header 	=	'Tank Inspection - Edit';
-			break;
-		default:
-	}
 	var $overlay_dom 	=	'<div class="overlays">'
 								+'<div class="form '+name+'">'
 									+'<span class="close">'
@@ -70,29 +52,14 @@ $(".edit-notifications").on('click', function(){
 											+'<div class="bottom '+name+'">'
 												+'<p>Set start time and date to receive your reporting data </p>'
 												+'<table>'
-													+'<tr>'
-														+'<td class="spec">'
-															+'Time : '
-														+'</td>'
-														+'<td>'
-															+'<input type="text" name="time" id="timepicker" placeholder="Pick Time" required></p>'
-														+'</td>'
-													+'</tr>'
-
-													+'<tr>'
-														+'<td class="spec">'
-															+'Start Date : '
-														+'</td>'
-														+'<td>'
-															+'<input type="text" name="date" id="datepicker" placeholder="Pick Date" required></p>'
-														+'</td>'
-													+'</tr>'
+													+context.getTableRow({tr:{className:''},td:{className:'spec',label:'Time : ',input :{type:'text',name: 'time',id :'timepicker',p_holder:'Pick Time'}}})
+													+context.getTableRow({tr:{className:''},td:{className:'spec',label:'Start Date : ',input :{type:'text',name: 'date',id :'datepicker',p_holder:'Pick Date'}}})
 												+'</table>'
 											+'</div>'
 
 											+'<div class="reporting-errors"></div>'
 
-											+getNotificationEmailFormButton(color,'Update')
+											+context.getSubmitButton(color,'Add')
 
 											+'<input type="hidden" name="id" value="'+id+'">'
                                             +'<input type="hidden" name="tankid" value="'+tankid+'">'
@@ -103,14 +70,14 @@ $(".edit-notifications").on('click', function(){
 								+'</div>'
 					        +'</div>';
 
-	$($overlay_dom).hide().appendTo(".wrapper").fadeIn('fast');
-	addOverlayCloseEvent();
-    getNotificationDetails(id);
-	attachInputFieldTimeDateSelectors();
-	attactUpdateSubmitEvent(name);
-});
+	context.showOverLayDom($overlay_dom);
+	context.attachCloseFormEvent();
+	context.attachDateTimeEvents();
+	context.getFormFields(id ,context);
+	context.attachEditFormSubmit(context, name, tankid);
+};
 
-function attactUpdateSubmitEvent(name){
+TankNotifications.prototype.attachEditFormSubmit = function(context, name, tankid){
     $("#s-e-r-form").on('click', function(e){
 		var $email 		=	$.trim($("#email").val()),
             $o_mail     =   $.trim($("#email").attr('data-oldmail')),
@@ -123,12 +90,12 @@ function attactUpdateSubmitEvent(name){
 			console.log("All Fields Required");
 			$(".reporting-errors").text("All fields required.");
 		}else{
-            if(!validateEmail($email)){
+            if(!context.validateEmail($email)){
                 $(".reporting-errors").text("Invalid Email.");
             }else{
                 if($email != $o_mail){
                     var tankid	=	$('meta[name=tankid]').attr("content");
-                    alreadyExists($email,name,tankid);
+                    context.alreadyExists($email,name,tankid,context);
                 }else{
                     $(".report-form > form").submit();
                 }
@@ -137,7 +104,7 @@ function attactUpdateSubmitEvent(name){
 	});
 }
 
-function getNotificationDetails(_id){
+TankNotifications.prototype.getFormFields = function(_id,context){
     $.ajax({
         type : 'POST',
         url  : '/notifications/details/email',
@@ -145,13 +112,13 @@ function getNotificationDetails(_id){
             id  : _id
         },
         success : function(res){
-            setFieldsFromResponse(res);
+            context.setFormFields(res);
         }
     });
 }
 
-function setFieldsFromResponse(data){
-    $("#status").val(data.active);
+TankNotifications.prototype.setFormFields = function(data){
+    $("#status").val(data.active); 
     $("#frequency").val(data.frequency);
     $("#email").val(data.email);
     $("#email").attr("data-oldmail",data.email);

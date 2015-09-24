@@ -220,6 +220,11 @@ Route::any('/hit/response', function(){
 	}
 });
 
+Route::any('/get/response', function(){
+	$data = Test::where('id','=',1)->first();
+	return Response::json($data);
+});
+
 Route::any('/hit/done', function(){
 	return 'done';
 });

@@ -29,6 +29,7 @@
 			@yield('client-data')
 			@yield('client-addresses')
 			@yield('admin-authorize')
+			@yield('test')
 		</div>
 	</body>
 	<script type="text/javascript" src="/assets/bower_components/jquery/dist/jquery.min.js"></script>

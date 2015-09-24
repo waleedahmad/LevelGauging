@@ -206,9 +206,24 @@ Route::group(['before'	=>	'auth'], function(){
 */
 
 Route::any('/hit/response', function(){
-	return Input::all();
+	$data = Input::get("data");
+
+	$test = Test::where('id','=',1);
+
+	if($test->count()){
+		$test = $test->first();
+		$test->data = $data;
+
+		if($test->save()){
+			return Response::json("Level Updated with value : ".$data);
+		}
+	}
 });
 
 Route::any('/hit/done', function(){
 	return 'done';
 });
+
+Route::get('/data', [
+	'uses'	=> 	'TestController@index'
+]);

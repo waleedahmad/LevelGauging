@@ -34,10 +34,10 @@
         }
 
         .header-right {
-            width: 390px;
+            width: 410px;
             height: 100%;
             text-align: right;
-            padding: 20px;
+            padding-top: 20px;
             font-size: 18px;
             color: white;
         }
@@ -204,10 +204,6 @@
                 padding-left: 10px;
                 font-size: 22px;
 
-                span {
-                    margin-right: 10px;
-                }
-
                 a {
                     color: white;
                 }
@@ -219,7 +215,7 @@
                 .my-icon {
                     position: absolute;
                     right: 0;
-                    margin-top: 5px;
+                    margin-top: 9px;
                 }
 
                 .my-icon > i {
@@ -239,12 +235,20 @@
                 background-color: #788838;
             }
 
+            .email,
+            .glyphicon-user{
+                display: inline-block;
+            }
+
             .email{
                 font-size : 16px;
             }
 
             .glyphicon-user{
                 font-size: 16px;
+                margin-right: 10px;
+                margin-top: 11px;
+                float:left;
             }
         }
 

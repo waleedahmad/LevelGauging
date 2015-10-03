@@ -11,7 +11,7 @@
     <div class="content">
         <div class="header">
 			<div class="header-left">
-				<h2>Authorization</h2>
+				<h2>Authorisation</h2>
 			</div>
 			<div class="header-right">
 				@if(isset($user_email))
@@ -37,10 +37,10 @@
            				<table>
 	           				<thead>
 	           					<tr>
-		           					<th>Access</th>
-		           					<th>Password</th>
+	           						<th>Password</th>
 		           					<th class="notes">eNotes</th>
-		           					<th>Actions</th>
+		           					<th>Access</th>
+		           					<th class="actions">Actions</th>
 		           				</tr>
 	           				</thead>
 
@@ -49,6 +49,8 @@
 	           				 ?>
 	           				<tbody>
 	           					<tr>
+	           						<td>*******</td>
+		           					<td class="notes">@if(strlen($user->enote) > 30) {{substr($user->enote,0,30)}}... @else {{$user->enote}}@endif</td>
 		           					<td>
 		           						@if($user->approved)
 		           							Enabled
@@ -56,8 +58,7 @@
 		           							Disabled
 		           						@endif
 		           					</td>
-		           					<td>*******</td>
-		           					<td class="notes">@if(strlen($user->enote) > 30) {{substr($user->enote,0,30)}}... @else {{$user->enote}}@endif</td>
+		           					
 
 		           					<td class="actions">
 		           						<div class="left admin-edit-user" data-email="{{$user_email}}">

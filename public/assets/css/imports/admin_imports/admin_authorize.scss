@@ -17,7 +17,7 @@
                 background-color: #788838;
 
                 .header{
-                    height : 60px;
+                    height : 50px;
                     width: 100%;
                     padding-top: 10px;
                     padding-left: 20px;
@@ -51,12 +51,12 @@
                 }
 
                 .body{
-                    height : 530px;
+                    height : 540px;
                     width: 800px;
                     margin : 0px auto;
                     background-color:white;
                     padding-left: 10px;
-                    padding-top: 50px;
+                    padding-top: 10px;
 
                     .table{
                         table{
@@ -76,6 +76,10 @@
                                     &:first-child{
                                         padding-left: 5px;
                                     }
+
+                                    &.actions{
+                                        padding-left: 20px;
+                                    }
                                 }
                             }
 
@@ -91,6 +95,7 @@
                                     }
 
                                     &.actions{
+                                        padding-left: 20px;
                                         width: 230px;
                                         padding-top: 5px;
                                         svg{

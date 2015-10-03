@@ -2,7 +2,7 @@
     <input type="search" name="search" class="user-search" placeholder="Search user">
     <span class="glyphicon toggel-user-search glyphicon-option-horizontal" aria-hidden="true"></span>
     <div class="search-options">
-        <p>Filter:</p> <span class="all active">All</span> <span class="enabled">Enabled</span> <span class="disabled">Disabled</span>
+        <p>Filter:</p> <span class="active" data-action="all">All</span> <span data-action="enabled">Enabled</span> <span data-action="disabled">Disabled</span>
     </div>
 
     <div class="search-results">
@@ -19,9 +19,9 @@
             foreach($users as $user){
                
                 if(isset($user_email) && $user_email === $user->email){
-                    echo "<a href='/users/".$user_email."/".$active."'><li class='active'> <span class='glyphicon glyphicon-user' aria-hidden='true'></span><span class='email'>".substr($user->email,0,15)." </span><i class='my-icon'><i></i></i></li></a>";
+                    echo "<a href='/users/".$user_email."/".$active."' class='single-user' data-status='".$user->approved."'><li class='active'> <span class='glyphicon glyphicon-user' aria-hidden='true'></span><span class='email'>".substr($user->email,0,15)." </span><i class='my-icon'><i></i></i></li></a>";
                 }else{
-                    echo "<a href='/users/".$user->email."/".$active."'><li> <span class='glyphicon glyphicon-user' aria-hidden='true'></span><span class='email'>".substr($user->email,0,15)." </span></li></a>";
+                    echo "<a href='/users/".$user->email."/".$active."' class='single-user' data-status='".$user->approved."'><li> <span class='glyphicon glyphicon-user' aria-hidden='true'></span><span class='email'>".substr($user->email,0,15)." </span></li></a>";
                 }
 
             }

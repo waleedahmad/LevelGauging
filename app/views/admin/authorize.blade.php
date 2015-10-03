@@ -37,7 +37,7 @@
            				<table>
 	           				<thead>
 	           					<tr>
-	           						<th>Password</th>
+	           						
 		           					<th class="notes">eNotes</th>
 		           					<th>Access</th>
 		           					<th class="actions">Actions</th>
@@ -49,8 +49,8 @@
 	           				 ?>
 	           				<tbody>
 	           					<tr>
-	           						<td>*******</td>
-		           					<td class="notes">@if(strlen($user->enote) > 30) {{substr($user->enote,0,30)}}... @else {{$user->enote}}@endif</td>
+	           						
+		           					<td class="notes">@if(strlen($user->enote) > 60) {{substr($user->enote,0,60)}}... @else {{$user->enote}}@endif</td>
 		           					<td>
 		           						@if($user->approved)
 		           							Enabled

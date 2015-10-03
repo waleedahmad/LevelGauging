@@ -1,4 +1,4 @@
-$(".counter > .data").html("100");
+/*$(".counter > .data").html("100");
 
 setInterval(function(){
 	$.ajax({
@@ -8,4 +8,4 @@ setInterval(function(){
 			$(".counter > .data").html(res.data);
 		}
 	});
-},1000);
+},1000);*/

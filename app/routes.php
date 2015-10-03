@@ -200,35 +200,3 @@ Route::group(['before'	=>	'auth'], function(){
 		'uses'	=>	'LocationController@getLocationDetails'
 	]);
 });
-
-/**
-* Test Route
-*/
-
-Route::any('/hit/response', function(){
-	$data = Input::get("data");
-
-	$test = Test::where('id','=',1);
-
-	if($test->count()){
-		$test = $test->first();
-		$test->data = $data;
-
-		if($test->save()){
-			return Response::json("Level Updated with value : ".$data);
-		}
-	}
-});
-
-Route::any('/get/response', function(){
-	$data = Test::where('id','=',1)->first();
-	return Response::json($data);
-});
-
-Route::any('/hit/done', function(){
-	return 'done';
-});
-
-Route::get('/data', [
-	'uses'	=> 	'TestController@index'
-]);

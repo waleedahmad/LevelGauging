@@ -21,7 +21,7 @@ class CreateTanklocationTable extends Migration {
             $table->string('street2');
             $table->string('city');
             $table->string('region');
-            $table->string('post_code');
+            $table->string('postcode');
             $table->string('country');
             $table->timestamps();
             $table->primary('tank_id');

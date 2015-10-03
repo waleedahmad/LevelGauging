@@ -23,7 +23,7 @@ class UserSeeder extends Seeder {
             'enote'     =>  ''
         ]);
         
-        for($i = 0; $i<=98; $i++){
+        for($i = 0; $i<=9; $i++){
             DB::table('users')->insert([
                 'email'     =>  str_random(10).'@gmail.com',
                 'password'  =>  Hash::make('binarystar'),

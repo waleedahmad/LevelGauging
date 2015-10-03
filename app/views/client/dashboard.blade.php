@@ -37,7 +37,13 @@
                             </div>
 
                             <div class="percent">
-                                {{round(($tank->tanklevels/$tanklevels->max_sfl)*100, 2)}} %
+
+                                @if($tanklevels->current_fuel)
+                                    {{round(($tanklevels->current_fuel/$tanklevels->max_sfl)*100, 2)}} %
+                                @endif
+                               
+
+                                
                             </div>
                         </div>
                     </div>
@@ -51,7 +57,10 @@
                             </div>
 
                             <div class="percent">
-                                {{100 - round(($tanklevels->current_fuel/$tanklevels->max_sfl)*100, 2)}} %
+                                @if($tanklevels->current_fuel)
+                                    {{100 - round(($tanklevels->current_fuel/$tanklevels->max_sfl)*100, 2)}} %
+                                @endif
+
                             </div>
                         </div>
                     </div>

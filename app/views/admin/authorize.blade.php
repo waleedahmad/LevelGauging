@@ -37,19 +37,19 @@
            				<table>
 	           				<thead>
 	           					<tr>
-	           						
+
 		           					<th class="notes">eNotes</th>
 		           					<th>Access</th>
 		           					<th class="actions">Actions</th>
 		           				</tr>
 	           				</thead>
 
-	           				<?php 
+	           				<?php
 	           					$user 	=	User::where('email','=',$user_email)->get()->first();
 	           				 ?>
 	           				<tbody>
 	           					<tr>
-	           						
+
 		           					<td class="notes">@if(strlen($user->enote) > 60) {{substr($user->enote,0,60)}}... @else {{$user->enote}}@endif</td>
 		           					<td>
 		           						@if($user->approved)
@@ -58,15 +58,15 @@
 		           							Disabled
 		           						@endif
 		           					</td>
-		           					
+
 
 		           					<td class="actions">
 		           						<div class="left admin-edit-user" data-email="{{$user_email}}">
-											@include('admin.svgs.edit_contacts')
+											<span>Edit</span>
 		           						</div>
 
 		           						<div class="right admin-remove-user" data-email="{{$user_email}}">
-		           							@include('admin.svgs.delete_contact')
+		           							<span>Remove</span>
 		           						</div>
 		           					</td>
 		           				</tr>

@@ -46,7 +46,7 @@
 	           				<thead>
 	           					<tr>
 		           					<th>Marking ID</th>
-		           					
+
 		           					<th>Fuel grade</th>
 		           					<th>Shape</th>
 		           					<th class="actions">Actions</th>
@@ -54,7 +54,7 @@
 	           				</thead>
 	           				<tbody>
 	           					@foreach($tanks as $tank)
-			           			<?php 
+			           			<?php
 			           				$tank_specs 	=	TankSpecs::where('tank_id','=',$tank->id)->get()->first();
 			           				$user_id 		=	User::where('email','=',$tank->owner)->first()->id;
 			           			?>
@@ -66,12 +66,12 @@
 		           					<td class="actions">
 		           						<div class="left" data-email="{{$user_email}}">
 											<a target="_blank" href="/user/{{$user_id}}/tank/{{$tank->id}}/dashboard">
-												@include('admin.svgs.edit_contacts')
+												Edit
 											</a>
 		           						</div>
 
 		           						<div class="right" data-email="{{$user_email}}">
-		           							@include('admin.svgs.delete_contact')
+		           							<span>Remove</span>
 		           						</div>
 		           					</td>
 		           				</tr>

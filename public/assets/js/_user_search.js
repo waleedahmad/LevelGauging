@@ -22,7 +22,7 @@ var toggleSearch 	=	function(){
 
 	this.handleSearchToggle =	function(e){
 		var context 	= 	e.data.context;
-	
+
 		if(context.hasClass('glyphicon-option-horizontal')){
 
 			context.removeClass('glyphicon-option-horizontal');
@@ -54,9 +54,13 @@ var toggleSearch 	=	function(){
 		if(context.getQueryLength()){
 			var query 	=	context.getSearchQuery();
 			context.requestResults(query,context);
+			$('.users-list').slideUp();
+			$(".pager").slideUp();
 		}else{
 			context.emptySearchList();
 			context.hideSearchResults();
+			$('.users-list').slideDown();
+			$(".pager").slideDown();
 		}
 	}
 
@@ -86,11 +90,16 @@ var toggleSearch 	=	function(){
 				$(dom).appendTo('.search-results');
 				$('.search-results').slideDown();
 			}
+
 		}else{
 			var dom 	= "<span class='message'>No Results</span>";
 			$(dom).appendTo('.search-results');
 		}
 	}
+
+	this.getSearchResultsCount = function(){
+		return $('.search-results').find('a').length;
+	};
 
 	this.emptySearchList 	=	function(){
 		$('.search-results > .result').remove();

@@ -8,7 +8,9 @@
     height: 100%;
 
 
-    /** -- Client Title Header -- **/
+    /**
+        - Content View (Header)
+    **/
     .header {
         position: relative;
         background-color: #788838;
@@ -44,15 +46,16 @@
     }
 
 
-    /* --- Subpages Sidebar --- */
+    /**
+        - Dashbaord Views Navigation (Sidebar)
+    **/
     .sidebar {
         margin-left: 10px;
         margin-right: 5px;
-        margin-top: 8px;
+        margin-top: 10px;
         width: 100px;
         height: 930px;
         position: relative;
-
 
         ul,
         li {
@@ -61,57 +64,68 @@
             margin: 0px;
         }
 
+        // Nav icons list
         ul{
             min-height: 100%;
             background-color:white;
-        }
 
-        li {
-            margin: 2px;
+            // Single icon
+            a{
+                li {
+                    margin-bottom: 2px;
 
-            &:hover {
-                background-color: #a4be47;
+                    &:hover {
+                        background-color: #a4be47;
 
-                path,
-                rect,
-                polygon {
-                    fill: white;
+                        path,
+                        rect,
+                        polygon {
+                            fill: white;
+                        }
+                    }
+
+                    // SVG Nav icons
+                    .icon {
+                        height: 40px;
+                        width: 40px;
+                        margin-left: 30px;
+                        margin-top: 10px;
+                        margin-bottom: 5px;
+                    }
+                }
+
+                li:not(:first-child) {
+                    margin-top: 10px;
+                }
+
+                li.active {
+                    background-color: #a4be47;
+                    path,
+                    rect,
+                    polygon {
+                        fill: white;
+                    }
                 }
             }
         }
-
-        li:not(:first-child) {
-            margin-top: 10px;
-        }
-
-        li.active {
-            background-color: #a4be47;
-
-            path,
-            rect,
-            polygon {
-                fill: white;
-            }
-        }
-
-        .icon {
-            height: 40px;
-            width: 40px;
-            margin-left: 30px;
-            margin-top: 10px;
-            margin-bottom: 5px;
-        }
     }
 
-    /* --- Tanks Sidebar ---*/
+    /**
+        - Admin Dashboard Users List (Sidebar)
+    **/
     .sidebar-user {
         margin-left: 0;
         margin-right: 10px;
         margin-top: 10px;
         width: 210px;
+        height: 930px;
         position: relative;
         font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
+        /*
+            - User Search Bar
+            - Filter Togger Button
+        */
         .user-search,
         .toggel-user-search{
             float:left;
@@ -166,8 +180,8 @@
 
         .search-results{
             width: 210px;
-            margin-bottom : 10px;
             display: none;
+
 
             .s-header{
                 font-size: 14px;
@@ -178,81 +192,98 @@
                 clear: both;
             }
 
-            border-bottom : 1px solid  #a4be47;
-            padding-bottom: 5px;
+
         }
 
-        ul,
-        li {
+        .search-results{
+            border-bottom : 1px solid  #a4be47;
+        }
+
+        .users-list,
+        .search-results{
+
             list-style: none;
             padding: 0;
             margin: 0;
+            margin-bottom : 5px;
+            padding-bottom: 5px;
             clear:both;
-        }
-        a {
-            overflow-x: visible;
-            text-decoration: none;
-            display: block;
+            a {
+                overflow-x: visible;
+                text-decoration: none;
+                display: block;
 
-            li {
-                background-color: #a4be47;
-                width: 210px;
-                height: 45px;
-                color: white;
-                padding-top: 5px;
-                padding-left: 10px;
-                font-size: 22px;
-
-                a {
+                li {
+                    background-color: #a4be47;
+                    width: 210px;
+                    height: 45px;
                     color: white;
+                    padding-top: 5px;
+                    padding-left: 10px;
+                    font-size: 22px;
+
+                    a {
+                        color: white;
+                    }
+
+                    &:hover {
+                        background-color: #788838;
+                    }
+
+                    .my-icon {
+                        position: absolute;
+                        right: 0;
+                        margin-top: 9px;
+                    }
+
+                    .my-icon > i {
+                        position: absolute;
+                        display: inline-block;
+                        width: 0;
+                        height: 0;
+                        line-height: 0;
+                        border: 0.4em solid transparent;
+                        border-left: 0.4em solid #788838;
+                        left: 0;
+                        top: 0;
+                    }
                 }
 
-                &:hover {
+                li.active {
                     background-color: #788838;
                 }
 
-                .my-icon {
-                    position: absolute;
-                    right: 0;
-                    margin-top: 9px;
-                }
-
-                .my-icon > i {
-                    position: absolute;
+                .email,
+                .glyphicon-user{
                     display: inline-block;
-                    width: 0;
-                    height: 0;
-                    line-height: 0;
-                    border: 0.4em solid transparent;
-                    border-left: 0.4em solid #788838;
-                    left: 0;
-                    top: 0;
+                }
+
+                .email{
+                    font-size : 16px;
+                }
+
+                .glyphicon-user{
+                    font-size: 16px;
+                    margin-right: 10px;
+                    margin-top: 11px;
+                    float:left;
                 }
             }
 
-            li.active {
-                background-color: #788838;
-            }
-
-            .email,
-            .glyphicon-user{
-                display: inline-block;
-            }
-
-            .email{
-                font-size : 16px;
-            }
-
-            .glyphicon-user{
-                font-size: 16px;
-                margin-right: 10px;
-                margin-top: 11px;
-                float:left;
+            a:not(:first-child) {
+                margin-top: 5px;
             }
         }
 
-        a:not(:first-child) {
-            margin-top: 5px;
+
+        .pager{
+            margin: 0px;
+            li{
+
+                span,a{
+                    width: 100px;
+                }
+            }
         }
     }
 

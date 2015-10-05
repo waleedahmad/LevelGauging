@@ -20,7 +20,8 @@
         <div class="content-blocks">
             <div class="content-block-left">
                 <div class="content-block-left-capchart">
-
+                    <div id="gauge"></div>
+                    <div id="cap-chart"></div>
                 </div>
             </div>
 
@@ -110,7 +111,7 @@
         </div>
 
         <div class="avg-fuel-chart">
-
+            <div id="avg-chart"></div>
         </div>
     </div>
 </div>

@@ -32,6 +32,23 @@
                     background-color:white;
                     position: relative;
                     height: 350px;
+
+                    #gauge{
+                        width: 340px;
+                        height: 340px;
+                        position:absolute;
+                        z-index: 11;
+                        left: 55px;
+                        top: 35px;
+                    }
+
+                    #cap-chart{
+                        width: 295px;
+                        height: 295px;
+                        position:absolute;
+                        left: 77px;
+                        top: 26px;
+                    }
                 }
             }
 
@@ -236,15 +253,19 @@
                     }
                 }
             }
-
         }
 
         /** -- Fuel Data Chart (Timeline) -- **/
         .avg-fuel-chart{
-            height: 500px;
+            height: 300px;
             width: 100%;
             background-color:white;
             margin-top: 10px;
+
+            #avg-chart{
+                height: 300px;
+                margin: 0 auto;
+            }
         }
     }
 }

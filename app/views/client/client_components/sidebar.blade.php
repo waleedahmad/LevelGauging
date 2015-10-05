@@ -1,6 +1,5 @@
 <div class="sidebar">
-    <ul>
-        
+    <ul class="nav-icons">
         <?php
             $svgs = [
                     'dashboard'     =>      '<?xml version="1.0" encoding="utf-8"?>
@@ -122,9 +121,9 @@
 
             }
         ?>
-       
+
         @if(Session::get('auth')['type'] === "admin")
-        <?php 
+        <?php
             $svgs = [
                     'authorize'     =>      '<?xml version="1.0" encoding="utf-8"?>
                                             <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -169,7 +168,6 @@
             $active     =   basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
             foreach($pages as $page){
-
                 if($page == $active){
                     echo "<a href='/users/".$page."'><li class='active'>".$svgs[$page]."</li></a>";
                 }else{

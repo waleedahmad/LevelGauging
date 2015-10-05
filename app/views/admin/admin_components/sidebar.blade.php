@@ -1,6 +1,6 @@
 <div class="sidebar">
-    <ul>
-        <?php 
+    <ul class="nav-icons">
+        <?php
             $svgs = [
                     'authorize'     =>      '<?xml version="1.0" encoding="utf-8"?>
                                             <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -52,17 +52,14 @@
                     }else{
                         echo "<a href='/users/".$page."'><li class='active'>".$svgs[$page]."</li></a>";
                     }
-                    
-                }else{  
+
+                }else{
                     if(isset($user_email)){
                         echo "<a href='/users/".$user_email."/".$page."'><li>".$svgs[$page]."</li></a>";
                     }else{
                         echo "<a href='/users/".$page."'><li>".$svgs[$page]."</li></a>";
                     }
-
-                    
                 }
-
             }
          ?>
     </ul>

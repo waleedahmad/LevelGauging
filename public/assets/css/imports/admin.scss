@@ -7,7 +7,6 @@
     display:block;
     height: 100%;
 
-
     /**
         - Content View (Header)
     **/
@@ -45,7 +44,6 @@
         }
     }
 
-
     /**
         - Dashbaord Views Navigation (Sidebar)
     **/
@@ -57,19 +55,13 @@
         height: 930px;
         position: relative;
 
-        ul,
-        li {
+        .nav-icons{
             list-style: none;
             padding: 0px;
             margin: 0px;
-        }
-
-        // Nav icons list
-        ul{
             min-height: 100%;
             background-color:white;
 
-            // Single icon
             a{
                 li {
                     margin-bottom: 2px;
@@ -84,7 +76,6 @@
                         }
                     }
 
-                    // SVG Nav icons
                     .icon {
                         height: 40px;
                         width: 40px;
@@ -182,7 +173,6 @@
             width: 210px;
             display: none;
 
-
             .s-header{
                 font-size: 14px;
                 padding-left : 5px;
@@ -191,8 +181,6 @@
                 border-bottom : 1px solid  #a4be47;
                 clear: both;
             }
-
-
         }
 
         .search-results{
@@ -201,13 +189,13 @@
 
         .users-list,
         .search-results{
-
             list-style: none;
             padding: 0;
             margin: 0;
             margin-bottom : 5px;
             padding-bottom: 5px;
             clear:both;
+            
             a {
                 overflow-x: visible;
                 text-decoration: none;
@@ -222,6 +210,10 @@
                     padding-left: 10px;
                     font-size: 22px;
 
+                    &.active{
+                        background-color: #788838;
+                    }
+
                     a {
                         color: white;
                     }
@@ -230,51 +222,46 @@
                         background-color: #788838;
                     }
 
-                    .my-icon {
+                    .email,
+                    .glyphicon-user{
+                        display: inline-block;
+                    }
+
+                    .email{
+                        font-size : 16px;
+                    }
+
+                    .glyphicon-user{
+                        font-size: 16px;
+                        margin-right: 10px;
+                        margin-top: 11px;
+                        float:left;
+                    }
+
+                    .active-bar {
                         position: absolute;
                         right: 0;
                         margin-top: 9px;
+
+                        i{
+                            position: absolute;
+                            display: inline-block;
+                            width: 0;
+                            height: 0;
+                            line-height: 0;
+                            border: 0.4em solid transparent;
+                            border-left: 0.4em solid #788838;
+                            left: 0;
+                            top: 0;
+                        }
                     }
-
-                    .my-icon > i {
-                        position: absolute;
-                        display: inline-block;
-                        width: 0;
-                        height: 0;
-                        line-height: 0;
-                        border: 0.4em solid transparent;
-                        border-left: 0.4em solid #788838;
-                        left: 0;
-                        top: 0;
-                    }
                 }
 
-                li.active {
-                    background-color: #788838;
+                &:not(:first-child) {
+                    margin-top: 5px;
                 }
-
-                .email,
-                .glyphicon-user{
-                    display: inline-block;
-                }
-
-                .email{
-                    font-size : 16px;
-                }
-
-                .glyphicon-user{
-                    font-size: 16px;
-                    margin-right: 10px;
-                    margin-top: 11px;
-                    float:left;
-                }
-            }
-
-            a:not(:first-child) {
-                margin-top: 5px;
             }
         }
-
 
         .pager{
             margin: 0px;

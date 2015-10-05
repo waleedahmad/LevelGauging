@@ -56,7 +56,7 @@
                             <p>Email : <span class='email'>{{$d_address->email}}</span></p>
                             @if(Session::get('auth')['type'] === "admin")
                                 <input type="checkbox"  class="contact-checkbox" data-id="{{$d_address->id}}" name="name" value="">
-                            @endif  
+                            @endif
                         </div>
                     </div>
                     @endif
@@ -77,8 +77,6 @@
                             </div>
                         </div>
                     @endforeach
-
-
                 </div>
             </div>
         </div>

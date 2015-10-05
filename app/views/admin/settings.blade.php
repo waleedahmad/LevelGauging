@@ -8,7 +8,7 @@
 <div class="admin-settings">
     @include('admin.admin_components.sidebar')
     @include('admin.admin_components.sidebar_users')
-
+    
     <div class="content">
         <div class="header">
 			<div class="header-left">

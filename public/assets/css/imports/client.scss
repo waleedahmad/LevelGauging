@@ -10,8 +10,9 @@
     display:block;
     height: 100%;
 
-
-    /** -- Client Title Header -- **/
+    /**
+        -   Client Dashbarod View (Header)
+    **/
     .header {
         position: relative;
         background-color: #788838;
@@ -46,7 +47,9 @@
         }
     }
 
-    /* --- Subpages Sidebar --- */
+    /**
+        -   Client Dashboard View Sidebar (Navigation)
+    **/
     .sidebar {
         margin-left: 10px;
         margin-right: 5px;
@@ -55,59 +58,57 @@
         height: 930px;
         position: relative;
 
-
-        ul,
-        li {
+        .nav-icons{
             list-style: none;
             padding: 0px;
             margin: 0px;
-        }
-
-        ul{
             min-height: 100%;
             background-color:white;
-        }
 
-        li {
-            margin-bottom: 2px;
+            a{
+                li {
+                    margin-bottom: 2px;
 
-            &:hover {
-                background-color: #a4be47;
+                    &:hover {
+                        background-color: #a4be47;
 
-                path,
-                rect,
-                polygon {
-                    fill: white;
+                        path,
+                        rect,
+                        polygon {
+                            fill: white;
+                        }
+                    }
+
+                    .icon {
+                        height: 40px;
+                        width: 40px;
+                        margin-left: 30px;
+                        margin-top: 12px;
+                        margin-bottom: 5px;
+                    }
+                }
+
+                li:not(:first-child) {
+                    margin-top: 10px;
+                }
+
+                li.active {
+                    background-color: #a4be47;
+
+                    path,
+                    rect,
+                    polygon {
+                        fill: white;
+                    }
                 }
             }
         }
-
-        li:not(:first-child) {
-            margin-top: 10px;
-        }
-
-        li.active {
-            background-color: #a4be47;
-
-            path,
-            rect,
-            polygon {
-                fill: white;
-            }
-        }
-
-        .icon {
-            height: 40px;
-            width: 40px;
-            margin-left: 30px;
-            margin-top: 12px;
-            margin-bottom: 5px;
-        }
     }
 
-    /* --- Tanks Sidebar ---*/
-    .sidebar-tanks,
-    .sidebar-user {
+    /**
+        -   Client Tanks (Sidebar)
+    **/
+    .sidebar-tanks{
         margin-left: 0;
         margin-right: 10px;
         margin-top: 10px;
@@ -115,92 +116,68 @@
         position: relative;
         font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
-        .user-search{
-            border : 0px;
-            width: 100%;
-            padding-left : 20px;
-            height: 30px;
-            margin-bottom: 10px;
-        }
-
-        ul,
-        li {
+        .tanks-list{
             list-style: none;
             padding: 0;
             margin: 0;
-        }
-        a {
-            overflow-x: visible;
-            text-decoration: none;
-            display: block;
 
-            li {
-                background-color: #a4be47;
-                width: 210px;
-                height: 45px;
-                color: white;
-                padding-top: 10px;
-                padding-left: 10px;
-                font-size: 22px;
+            a{
+                overflow-x: visible;
+                text-decoration: none;
+                display: block;
 
-                span {
-                    margin-right: 10px;
-                }
-
-                
-
-                a {
-                    color: white;
-                }
-
-                &:hover {
-                    background-color: #788838;
-                }
-
-                .my-icon {
-                    position: absolute;
-                    right: 0;
+                &:not(:first-child) {
                     margin-top: 5px;
                 }
 
-                .my-icon > i {
-                    position: absolute;
-                    display: inline-block;
-                    width: 0;
-                    height: 0;
-                    line-height: 0;
-                    border: 0.4em solid transparent;
-                    border-left: 0.4em solid #788838;
-                    left: 0;
-                    top: 0;
+                .tank{
+                    background-color: #a4be47;
+                    width: 210px;
+                    height: 45px;
+                    color: white;
+                    padding-top: 10px;
+                    padding-left: 10px;
+                    font-size: 22px;
+
+                    .glyphicon-align-justify {
+                        margin-right: 10px;
+                    }
+
+                    &:hover {
+                        background-color: #788838;
+                    }
+
+                    &.active{
+                        background-color: #788838;
+                        
+                        .active-bar {
+                            position: absolute;
+                            right: 0;
+                            margin-top: 5px;
+
+                            i{
+                                position: absolute;
+                                display: inline-block;
+                                width: 0;
+                                height: 0;
+                                line-height: 0;
+                                border: 0.4em solid transparent;
+                                border-left: 0.4em solid #788838;
+                                left: 0;
+                                top: 0;
+                            }
+                        }
+                    }
                 }
             }
-
-            li.active {
-                background-color: #788838;
-            }
-
-            .email{
-                font-size : 16px;
-            }
-
-            .glyphicon-user{
-                font-size: 16px;
-            }
-        }
-
-        a:not(:first-child) {
-            margin-top: 5px;
         }
     }
 
     .sidebar,
     .sidebar-tanks,
-    .content,
-    .sidebar-user {
+    .content{
         display: block;
         float: left;
-
     }
 }
 

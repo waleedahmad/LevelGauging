@@ -32,7 +32,11 @@
     @if($users->count())
         @foreach($users as $user)
             @if(isset($user_email) && $user_email === $user->email)
+                @if(Input::get('page'))
+                <a href='/users/{{$user_email}}/{{$active}}?page={{Input::get('page')}}' class='single-user' data-status='{{$user->approved}}'>
+                @else
                 <a href='/users/{{$user_email}}/{{$active}}' class='single-user' data-status='{{$user->approved}}'>
+                @endif
                     <li class='active'>
                         <span class='glyphicon glyphicon-user' aria-hidden='true'></span>
                         <span class='email'>{{substr($user->email,0,15)}}</span>
@@ -40,7 +44,11 @@
                     </li>
                 </a>
             @else
+                @if(Input::get('page'))
+                <a href='/users/{{$user->email}}/{{$active}}?page={{Input::get('page')}}' class='single-user' data-status='{{$user->approved}}'>
+                @else
                 <a href='/users/{{$user->email}}/{{$active}}' class='single-user' data-status='{{$user->approved}}'>
+                @endif
                     <li>
                         <span class='glyphicon glyphicon-user' aria-hidden='true'></span>
                         <span class='email'>{{substr($user->email,0,15)}}</span>

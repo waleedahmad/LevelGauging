@@ -40,7 +40,7 @@
                     </li>
                 </a>
             @else
-                <a href='/users/{{$user->email}}/{{$active}}' class='single-user' data-status='".$user->approved."'>
+                <a href='/users/{{$user->email}}/{{$active}}' class='single-user' data-status='{{$user->approved}}'>
                     <li>
                         <span class='glyphicon glyphicon-user' aria-hidden='true'></span>
                         <span class='email'>{{substr($user->email,0,15)}}</span>

@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="actions">
-                        <div class="left">
+                        <div class="left update-levels">
                             @include('client.svgs.data.upload_button')
                         </div>
 

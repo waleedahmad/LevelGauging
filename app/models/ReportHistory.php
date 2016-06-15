@@ -1,8 +1,10 @@
 <?php
 
-class ReportHistory extends Eloquent{
+namespace App\Models;
 
-	protected $table = 'report_history';
+use Illuminate\Database\Eloquent\Model;
+
+class ReportHistory extends Model
+{
+    protected $table = 'report_history';
 }
-
-?>

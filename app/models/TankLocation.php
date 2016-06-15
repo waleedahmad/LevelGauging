@@ -1,10 +1,10 @@
 <?php
 
-class TankLocation extends Eloquent{
+namespace App\Models;
 
-	protected $table = 'tank_location';
+use Illuminate\Database\Eloquent\Model;
 
-	protected $primaryKey = 'tank_id';
+class TankLocation extends Model
+{
+    protected $table = 'tank_location';
 }
-
-?>

@@ -1,0 +1,57 @@
+html{
+  height      : 100%;
+  width       : 100%;
+  margin      :   0px;
+  border      :   0px;
+  padding     :   0px;
+}
+
+body{
+  display:block;
+  position: relative;
+  height:100%;
+  font-family:"Proxima Nova Regular", 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-weight:normal;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  .wrapper{
+    display: block;
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+    width: 1168px;
+    margin: 0px auto;
+    background: #ececec;
+
+    @import 'imports/auth';
+    @import 'imports/client';
+    @import 'imports/admin';
+    @import 'imports/overlays';
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+      border-radius: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgba(0,0,0,0.3);
+    }
+
+    .counter{
+      text-align: center;
+      font-size: 200px;
+      margin-top: 100px;
+      color:red;
+      font-weight:bold;
+    }
+
+  }
+
+  @import "imports/timepicker";
+
+}

@@ -1,8 +1,10 @@
 <?php
 
-class TankManufacturer extends Eloquent{
+namespace App\Models;
 
-	protected $table = 'tank_manufacturer_details';
+use Illuminate\Database\Eloquent\Model;
+
+class TankManufacturer extends Model
+{
+    protected $table = 'tank_manufacturer_details';
 }
-
-?>

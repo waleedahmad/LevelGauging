@@ -1,8 +1,10 @@
 <?php
 
-class TankLevels extends Eloquent{
+namespace App\Models;
 
-	protected $table = 'tank_level_details';
+use Illuminate\Database\Eloquent\Model;
+
+class TankLevels extends Model
+{
+    protected $table = 'tank_level_details';
 }
-
-?>

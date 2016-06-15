@@ -1,8 +1,10 @@
 <?php
 
-class NotifyEmail extends Eloquent{
+namespace App\Models;
 
-	protected $table = 'report_contacts';
+use Illuminate\Database\Eloquent\Model;
+
+class NotifyEmail extends Model
+{
+    protected $table = 'report_contacts';
 }
-
-?>

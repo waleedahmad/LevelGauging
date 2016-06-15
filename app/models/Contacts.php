@@ -1,8 +1,10 @@
 <?php
 
-class Contacts extends Eloquent{
+namespace App\Models;
 
-	protected $table = 'contacts';
+use Illuminate\Database\Eloquent\Model;
+
+class Contacts extends Model
+{
+    protected $table = 'contacts';
 }
-
-?>

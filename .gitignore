@@ -1,22 +1,7 @@
 ### Laravel ###
 vendor/
 node_modules/
-
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-bootstrap/cache/
-.env.*.php
-.env.php
 .env
-
-/vendor
-/node_modules
-/public/storage
-Homestead.yaml
-Homestead.json
 
 # PHPStorm
 .idea
@@ -29,4 +14,5 @@ Homestead.json
 /public/assets/css
 /public/assets/js
 /public/assets/bower_components
+/public/uploads/
 

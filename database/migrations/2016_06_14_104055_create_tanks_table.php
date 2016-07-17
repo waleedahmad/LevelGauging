@@ -16,7 +16,7 @@ class CreateTanksTable extends Migration
             $table->increments('id');
             $table->string('owner');
             $table->timestamps();
-            $table->foreign('owner')->references('email')->on('users');
+            $table->foreign('owner')->references('email')->on('users')->onDelete('cascade');
         });
     }
 

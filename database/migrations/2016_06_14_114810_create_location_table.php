@@ -25,7 +25,7 @@ class CreateLocationTable extends Migration
             $table->string('country');
             $table->timestamps();
 
-            $table->foreign('tank_id')->references('id')->on("tanks");
+            $table->foreign('tank_id')->references('id')->on("tanks")->onDelete('cascade');
         });
     }
 

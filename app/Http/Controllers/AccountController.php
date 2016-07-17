@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ReportHistory;
+use App\Models\Tank;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 use App\Models\User;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class AccountController extends Controller
@@ -172,8 +175,23 @@ class AccountController extends Controller
         $email     =   $request->input('email');
         $user      =   User::where('email','=',$email)->get()->first();
 
+        $this->purgeTankHistoryFiles($this->getUserTankIDs($user->email));
+        
         if($user->delete()){
             return response()->json(true);
+        }
+    }
+
+    public function getUserTankIDs($email){
+        return Tank::where('owner','=',$email)->lists('id');
+    }
+
+    public function purgeTankHistoryFiles($ids){
+        foreach ($ids as $id){
+            $files = ReportHistory::where('tank_id','=',$id)->get();
+            foreach($files as $file){
+                Storage::disk('local')->delete('/public/history/'.$file->file_name);
+            }
         }
     }
 

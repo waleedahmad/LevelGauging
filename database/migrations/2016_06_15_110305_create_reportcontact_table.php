@@ -23,7 +23,7 @@ class CreateReportcontactTable extends Migration
             $table->string('frequency');
             $table->timestamps();
 
-            $table->foreign('tank_id')->references('id')->on("tanks");
+            $table->foreign('tank_id')->references('id')->on("tanks")->onDelete('cascade');
         });
     }
 

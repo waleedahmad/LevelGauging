@@ -22,7 +22,7 @@ class CreateTankSpecificationsTable extends Migration
             $table->string('internal');
             $table->timestamps();
 
-            $table->foreign('tank_id')->references('id')->on("tanks");
+            $table->foreign('tank_id')->references('id')->on("tanks")->onDelete('cascade');
         });
     }
 

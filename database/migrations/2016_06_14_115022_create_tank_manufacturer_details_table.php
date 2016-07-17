@@ -21,7 +21,7 @@ class CreateTankManufacturerDetailsTable extends Migration
             $table->date('dated');
             $table->float('test_pressure');
             $table->timestamps();
-            $table->foreign('tank_id')->references('id')->on("tanks");
+            $table->foreign('tank_id')->references('id')->on("tanks")->onDelete('cascade');
         });
     }
 

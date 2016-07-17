@@ -18,7 +18,7 @@ class CreateReportHistoryTable extends Migration
             $table->text('file_name');
             $table->text('uri');
             $table->timestamps();
-            $table->foreign('tank_id')->references('id')->on("tanks");
+            $table->foreign('tank_id')->references('id')->on("tanks")->onDelete('cascade');
         });
     }
 

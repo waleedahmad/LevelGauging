@@ -23,7 +23,7 @@ class CreateTankInspectionTable extends Migration
             $table->string('email');
             $table->timestamps();
 
-            $table->foreign('tank_id')->references('id')->on("tanks");
+            $table->foreign('tank_id')->references('id')->on("tanks")->onDelete('cascade');
         });
     }
 

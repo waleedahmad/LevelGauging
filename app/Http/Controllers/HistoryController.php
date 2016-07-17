@@ -30,7 +30,7 @@ class HistoryController extends Controller
             $history->tank_id 	=	$tank_id;
             $history->file_name =	$name;
             $history->uri 		=	$uri;
-            $history->identifier =  $id.'.'.$ext;
+            $history->file_name =  $id.'.'.$ext;
 
             if($history->save()){
                 return redirect("/user/".$user_id."/tank/".$tank_id.'/details')
@@ -50,8 +50,7 @@ class HistoryController extends Controller
 
         if($history->count()){
             $history 	=	$history->first();
-
-            if(Storage::disk('local')->delete('/public/history/'.$history->identifier)){
+            if(Storage::disk('local')->delete('/public/history/'.$history->file_name)){
                 if($history->delete()){
                     return response()->json(['status' => true]);
                 }
